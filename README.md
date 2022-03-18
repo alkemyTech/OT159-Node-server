@@ -28,7 +28,7 @@ npm start
 ```
 ## Demo Users
 
-There are 20 demo users, 10 standard and 10 regular. The info is the similar for all the users, with the difference of one number from 1 to 10 that you add.
+There are 20 demo users, 10 standard and 10 regular. The info is similar for all the users, with the difference of one number from 1 to 10 that you add.
 
 To login you use this base for standard users:
 
