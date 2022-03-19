@@ -28,17 +28,17 @@ npm start
 ```
 ## Demo Users
 
-There are 20 demo users, 10 standard and 10 regular. The info is similar for all the users, with the difference of one number from 1 to 10 that you add.
+There are 20 demo users, 10 admin and 10 standard. The info is similar for all the users, with the difference of one number from 1 to 10 that you add.
 
-To login you use this base for standard users:
+To login you use this base for admin users:
 
 ```
-email: standardUser<ADD NUMBER>@demo.com
+email: admin<ADD NUMBER>@demo.com
+password: adminPass<ADD SAME NUMBER>
+```
+And this one for standard users:
+
+```
+email: standard<ADD NUMBER>@demo.com
 password: standardPass<ADD SAME NUMBER>
-```
-And this one for regular users:
-
-```
-email: regularUser<ADD NUMBER>@demo.com
-password: regularPass<ADD SAME NUMBER>
 ```

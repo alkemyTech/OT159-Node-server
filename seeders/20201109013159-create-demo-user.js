@@ -3,24 +3,24 @@
 let users = [];
 for (let i = 0; i < 10; i++) {
   users.push({
-    firstName: `Standard${i + 1}`,
-    lastName: `StandardLastName${i  + 1}`,
-    email: `standardUser${i + 1}@demo.com`,
-    password: `standardPass${i + 1}`,
-    roleId: i + 1,
-    photo: `http://standard-image.com/${i + 1}`,    
+    firstName: `Admin${i + 1}`,
+    lastName: `AdminLastName${i  + 1}`,
+    email: `admin${i + 1}@demo.com`,
+    password: `adminPass${i + 1}`,
+    roleId: 1,
+    photo: `http://admin-image.com/${i + 1}`,    
     createdAt: new Date,
     updatedAt: new Date
   });
 };
 for (let i = 0; i < 10; i++) {
   users.push({
-    firstName: `Regular${i + 1}`,
-    lastName: `RegularLastName${i + 1}`,
-    email: `regularUser${i + 1}@demo.com`,
-    password: `regularPass${i + 1}`,
-    roleId: i + 1,
-    photo: `http://regular-image.com/${i + 1}`,    
+    firstName: `Standard${i + 1}`,
+    lastName: `StandardLastName${i + 1}`,
+    email: `standard${i + 1}@demo.com`,
+    password: `standardPass${i + 1}`,
+    roleId: 2,
+    photo: `http://standard-image.com/${i + 1}`,    
     createdAt: new Date,
     updatedAt: new Date
   });
