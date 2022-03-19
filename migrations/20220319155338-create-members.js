@@ -8,11 +8,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id: {
-        type: Sequelize.BIGINT
-      },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       facebookUrl: {
         type: Sequelize.STRING
@@ -20,8 +18,12 @@ module.exports = {
       instagramUrl: {
         type: Sequelize.STRING
       },
-      image: {
+      linkedinUrl: {
         type: Sequelize.STRING
+      },
+      image: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
       description: {
         type: Sequelize.STRING
@@ -33,10 +35,6 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
-      softDelete: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: true
       }
     });
   },
