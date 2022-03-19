@@ -1,9 +1,7 @@
 var express = require('express');
 var router = express.Router();
-
+const controllerNews = require('../controllers/controllerNews')
 /* POST news. */
-router.post('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+router.post('/', controllerNews.addNews);
 
 module.exports = router;
