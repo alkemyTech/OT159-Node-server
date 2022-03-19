@@ -1,53 +1,30 @@
-module.exports = (sequelize, dataTypes) => {
-
-    let alias = 'Organization'; 
-
-    let cols = {
-        id: {
-            type: dataTypes.BIGINT(10).UNSIGNED,
-            primaryKey: true,
-            allowNull: false,
-            autoIncrement: true
-        },
-        name: {
-            type: dataTypes.STRING(100),
-            allowNull: false
-        },
-        image: {
-            type: dataTypes.STRING(50), 
-            allowNull: false
-        },
-        address: {
-            type: dataTypes.STRING(100),
-            allowNull: true
-        },
-        phone: {
-            type: dataTypes.INTEGER,
-            allowNull: true
-        },
-        email: {
-            type: dataTypes.STRING(50),
-            allowNull: false
-        },
-        welcome: {
-            type: dataTypes.STRING,
-            allowNull: false
-        },
-        aboutUsText: {
-            type: dataTypes.STRING,
-            allowNull: true
-        }
-
-    };
-
-    let config = {
-        timestamps: false,
-        createdAt: 'created_at',
-        updatedAt: 'updated_at',
-        deletedAt: false
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class Organization extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
     }
-
-    const Organization = sequelize.define(alias,cols,config);
-
-    return Organization
+  };
+  Organization.init({
+    id: DataTypes.BIGINT,
+    name: DataTypes.STRING,
+    image: DataTypes.STRING,
+    address: DataTypes.STRING,
+    phone: DataTypes.INTEGER,
+    email: DataTypes.STRING,
+    welcomeText: DataTypes.STRING,
+    aboutUSText: DataTypes.STRING
+  }, {
+    sequelize,
+    modelName: 'Organization',
+  });
+  return Organization;
 };
