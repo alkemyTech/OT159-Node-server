@@ -1,4 +1,3 @@
-const express = require('express');
 const activitiesRepository = require('../repositories/activitiesRepository');
 
 exports.get = async (req, res) => {

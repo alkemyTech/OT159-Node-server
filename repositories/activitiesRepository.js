@@ -1,6 +1,6 @@
 const Activities = require('../models/activities');
 
-export default class ActivitiesRepository {
+class ActivitiesRepository {
 
     async findAll() {
         return await Activities.findAll();
@@ -10,3 +10,5 @@ export default class ActivitiesRepository {
         return await Activities.findByPk(id);
     }
 }
+
+module.exports = ActivitiesRepository;
