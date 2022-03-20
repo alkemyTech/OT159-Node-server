@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const activities = require('../controllers/activitiesController');
+const activities = require('../controllers/activityController');
 
 router.get('/', activities.get);
 router.get('/:id', activities.getById);

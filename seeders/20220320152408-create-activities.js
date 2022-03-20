@@ -6,8 +6,8 @@ module.exports = {
       name: 'Coding',
       content: 'Coding activity',
       image: 'coding.jpg',
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      createdAt: new Date,
+      updatedAt: new Date,
     }]
     )
   },

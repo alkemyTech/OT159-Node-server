@@ -1,8 +1,8 @@
-const activitiesRepository = require('../repositories/activitiesRepository');
+const activitiesService = require('../services/activityService');
 
 exports.get = async (req, res) => {
     try {
-        const activities = await activitiesRepository.findAll(); 
+        const activities = await activitiesService.getAll();
         res.status(200).send(activities);
     } catch (error) {
         res.status(500).send({
@@ -13,7 +13,7 @@ exports.get = async (req, res) => {
 
 exports.getById = async (req, res) => {
     try {
-        const activity = await activitiesRepository.findById(req.params.id);
+        const activity = await activitiesService.getById(req.params.id);
         res.status(200).send(activity);
     } catch (error) {
         res.status(500).send({
