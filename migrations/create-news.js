@@ -1,6 +1,6 @@
 'use strict';
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
+  up: async (queryInterface, Sequelize, ValidationError ) => {
     await queryInterface.createTable('News', {
       id: {
         allowNull: false,
@@ -11,14 +11,20 @@ module.exports = {
       name: {
         type: Sequelize.STRING,
         allowNull: false,
+        validate: {
+          notEmpty: true}
       },
       content: {
         type: Sequelize.TEXT,
-        allowNull: false
+        allowNull: false,
+        validate: {
+          notEmpty: true}
       },
       image: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+          notEmpty: true}
       },
       /*categoryId: {
         type: Sequelize.INTEGER,
@@ -43,7 +49,7 @@ module.exports = {
 
     });
   },
-  down: async (queryInterface, Sequelize) => {
+  down: async (queryInterface, Sequelize, ValidationError) => {
     await queryInterface.dropTable('News');
   }
 };
