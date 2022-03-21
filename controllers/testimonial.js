@@ -1,5 +1,19 @@
 const testimonialService = require("../services/testimonial");
 
+create = async (req, res) => {
+  const { name, image, content } = req.body;
+  try {
+    const newTestimonial = await testimonialService.create(
+      name,
+      image,
+      content
+    );
+    return res.status(200).send(newTestimonial);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+};
+
 listAll = async (req, res) => {
   try {
     const testimonials = await testimonialService.listAll();
@@ -24,4 +38,5 @@ findOne = async (req, res) => {
 module.exports = {
   listAll,
   findOne,
+  create,
 };
