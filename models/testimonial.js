@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
         allowNull: true,
       },
+      deletedAt: DataTypes.DATE,
     },
     {
       sequelize,
