@@ -1,15 +1,15 @@
 const { request, response } = require("express");
-const { newMember } = require("../services/memberService");
+const { memberServiceCreate } = require("../services/memberService");
 
 
 
 const postMembers = async (req = request, res = response) => {
 
-    const { name } = req.body;
+    const { name, image } = req.body;
 
-    const newMember = await newMember(name)
+    const newMember = await memberServiceCreate(name, image)
 
-    res.status(200).json({
+    res.status(201).json({
         ok: 'ok',
         newMember
     })

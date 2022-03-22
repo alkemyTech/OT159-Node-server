@@ -2,7 +2,7 @@ const { Router } = require('express');
 const { check } = require('express-validator');
 const { postMembers } = require('../controlers/membersController');
 const { validarCampos } = require('../middlewares/validar-campos');
-
+const { request } = require('express')
 const router = Router();
 
 
@@ -37,8 +37,10 @@ router.get('/:id', [],
  *            description: the members' description something
  *       required:
  *         - name
+ *         - image
  *       example:
  *        name: Merecedez Estafania 
+ *        image: "1"
  */
 /**
  * @swagger
@@ -58,9 +60,10 @@ router.get('/:id', [],
  *           description: new user created 
  */
 router.post('/', [
-    check('name', 'the name can not be empty').not().isEmpty(),
-    check('name', 'the name is String').isString(),
-    check('facebookUrl', 'NO estoy enviando este campo').isString(),
+    check('name', 'The name is a string').isString(),
+    check('name', 'the name is required').notEmpty(),
+    check('image', 'The image is a string').isString(),
+    check('image', 'the image is required').notEmpty(),
     check('facebookUrl', 'this param is a String').not().isNumeric(),
     check('facebookUrl', 'this param is a String').not().isDate(),
     check('facebookUrl', 'this param is a String').not().isObject(),

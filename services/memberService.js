@@ -1,10 +1,10 @@
-const memberRepositopry = require('../repositories/memberRepository');
+const { memberRepositoryCreate } = require('../repositories/memberRepository');
 
 
 
-const newMember = (name) => {
-    return memberRepositopry.createNewMember(name);
+const memberServiceCreate = (name, image) => {
+    return memberRepositoryCreate(name, image);
 }
 
 
-module.exports = { newMember }
+module.exports = { memberServiceCreate }
