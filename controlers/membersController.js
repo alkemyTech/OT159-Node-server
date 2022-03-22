@@ -1,22 +1,22 @@
 const { request, response } = require("express");
+const { newMember } = require("../services/memberService");
 
-const db = require('../models');
 
 
 const postMembers = async (req = request, res = response) => {
 
     const { name } = req.body;
 
-    const a = await db.member.create({ name });
-
-
+    const newMember = await newMember(name)
 
     res.status(200).json({
         ok: 'ok',
-        a
+        newMember
     })
 
 }
+
+
 
 
 module.exports = {

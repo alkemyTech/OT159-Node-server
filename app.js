@@ -5,13 +5,30 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors')
 require('dotenv').config()
-
+const swaggerUI = require('swagger-ui-express');
+const swaggerJsDoc = require('swagger-jsdoc')
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const app = express();
 app.use(cors())
 const port = process.env.PORT;
-
+swaggerSpec = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Node Documentation API",
+      version: "1.0.0"
+    },
+    servers: [
+      {
+        url: `http://localhost:${port}`
+      }
+    ]
+  },
+  apis: [
+    `${path.join(__dirname, './routes/*.js')}`
+  ]
+}
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -21,7 +38,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use("/api-doc", swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(swaggerSpec)))
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/members', require('./routes/members'))
