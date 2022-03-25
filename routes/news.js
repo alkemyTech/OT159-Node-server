@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
-const { controllerNews } = require('../controllers/controllerNews')
+const { controllerAddNews } = require('../controllers/controllerNews');
+const ValidateInputNews = require('../middlewares/validations');
 /* POST news. */
-router.post('/', controllerNews);
+router.post('/', ValidateInputNews,controllerAddNews);
 
 module.exports = router;

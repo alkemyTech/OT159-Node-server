@@ -23,7 +23,9 @@ module.exports = (sequelize, DataTypes) => {
     updatedAt: DataTypes.DATE
   }, {
     sequelize,
+    paranoid: true,
     modelName: 'New',
+
   });
   return New;
 };
