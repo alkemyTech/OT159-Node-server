@@ -14,16 +14,40 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Organization.init({
-    id: DataTypes.BIGINT,
-    name: DataTypes.STRING,
-    image: DataTypes.STRING,
-    address: DataTypes.STRING,
-    phone: DataTypes.INTEGER,
-    email: DataTypes.STRING,
-    welcomeText: DataTypes.STRING,
-    aboutUSText: DataTypes.STRING
+    id: {
+      type: DataTypes.BIGINT,
+      autoIncrement: true,
+      primaryKey: true,
+      allowNull: false
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    address: {
+      type: DataTypes.STRING
+    },
+    phone: {
+      type: DataTypes.INTEGER
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    welcomeText: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    aboutUSText: {
+      type: DataTypes.STRING
+    }
   }, {
     sequelize,
+    paranoid: true,
     modelName: 'Organization',
   });
   return Organization;

@@ -40,10 +40,6 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
-      softDelete: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: true
       }
     });
   },
