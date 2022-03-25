@@ -5,14 +5,7 @@ const organizationController = {
 
     showData: async (req, res) => {
 
-        
         const allData = await organizationServices.getData()
-
-        let cleanData = [];
-
-        allData.map((data)=> {
-            cleanData.push({name: data.name , image: data.image, phone: data.phone, address: data.address })
-        })
 
         let response = {
             meta: {
@@ -20,7 +13,7 @@ const organizationController = {
                 total: allData.length,
                 url: 'organization/public'
             },
-            data: cleanData  
+            data: allData  
             }
             res.json(response);
     } 
