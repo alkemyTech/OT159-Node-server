@@ -39,6 +39,10 @@ module.exports = (sequelize, DataTypes) => {
       beforeCreate: (category, options, fn) => {
         category.createdAt = new Date();
         fn(null,cagetory)
+      },
+      beforeDestroy: (category, options, fn) => {
+        category.deletedAt = new Date();
+        fn(null,cagetory)
       }
     },
   },
