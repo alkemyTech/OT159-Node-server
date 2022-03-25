@@ -1,7 +1,8 @@
 const serviceNews = require('../services/news');
 
 const controllerAddNews = async function (req, res, next) {
-    try {const { name, content, image } = req
+    try {
+        const { name, content, image } = req.body
         const data = {
             name,
             content,
