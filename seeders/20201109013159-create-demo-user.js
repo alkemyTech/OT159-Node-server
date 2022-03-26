@@ -1,8 +1,10 @@
 'use strict';
 
-let users = [];
+let admin = [];
+let standard = [];
+
 for (let i = 0; i < 10; i++) {
-  users.push({
+  admin.push({
     firstName: `Admin${i + 1}`,
     lastName: `AdminLastName${i  + 1}`,
     email: `admin${i + 1}@demo.com`,
@@ -12,9 +14,7 @@ for (let i = 0; i < 10; i++) {
     createdAt: new Date,
     updatedAt: new Date
   });
-};
-for (let i = 0; i < 10; i++) {
-  users.push({
+  standard.push({
     firstName: `Standard${i + 1}`,
     lastName: `StandardLastName${i + 1}`,
     email: `standard${i + 1}@demo.com`,
@@ -25,6 +25,8 @@ for (let i = 0; i < 10; i++) {
     updatedAt: new Date
   });
 };
+
+let users =  [...admin, ...standard];
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
