@@ -25,7 +25,6 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
-db.categories = require('./categories')(sequelize, Sequelize.DataTypes);
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

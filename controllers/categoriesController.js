@@ -4,7 +4,7 @@ exports.create = async (req, res) => {
     try {
         const {name, description, image} =  req.body
         const category = await categoryServiceCreate(name, description, image) 
-        res.status(200).json({
+        res.status(201).json({
             category,
             msg:"the category has been created"
         });
