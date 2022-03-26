@@ -10,7 +10,7 @@ create = async (req, res) => {
     );
     return res.status(201).send(newTestimonial);
   } catch (error) {
-    res.status(400).send(error);
+    res.status(500).send(error);
   }
 };
 module.exports = {
