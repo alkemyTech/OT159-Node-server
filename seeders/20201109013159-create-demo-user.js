@@ -1,30 +1,47 @@
 'use strict';
 
+let adminData = {
+  firstName: 'Admin',
+  lastName: 'AdminlastName',
+  email: 'admin',
+  password: 'adminPass',
+  roleId: 1,
+  photo: 'http://admin-image.com/'
+};
+
+let standardData = {
+  firstName: 'Standard',
+  lastName: 'StandardlastName',
+  email: 'standard',
+  password: 'standardPass',
+  roleId: 2,
+  photo: 'http://standard-image.com/'
+};
+
+function loadUser(cant, target, user) {
+
+  const { firstName, lastName, email, password, roleId, photo } = user;
+  cant++; 
+
+  for (let i = 1; i < cant; i++) {
+      target.push({
+          firstName: `${firstName}${i}`,
+          lastName: `${lastName}${i}`,
+          email: `${email}${i}@demo.com`,
+          password: `${password}${i}`,
+          roleId,
+          photo: `${photo}${i}`,
+          createdAt: new Date(),
+          updatedAt: new Date()
+      })      
+  };
+};
+
 let admin = [];
 let standard = [];
 
-for (let i = 0; i < 10; i++) {
-  admin.push({
-    firstName: `Admin${i + 1}`,
-    lastName: `AdminLastName${i  + 1}`,
-    email: `admin${i + 1}@demo.com`,
-    password: `adminPass${i + 1}`,
-    roleId: 1,
-    photo: `http://admin-image.com/${i + 1}`,    
-    createdAt: new Date,
-    updatedAt: new Date
-  });
-  standard.push({
-    firstName: `Standard${i + 1}`,
-    lastName: `StandardLastName${i + 1}`,
-    email: `standard${i + 1}@demo.com`,
-    password: `standardPass${i + 1}`,
-    roleId: 2,
-    photo: `http://standard-image.com/${i + 1}`,    
-    createdAt: new Date,
-    updatedAt: new Date
-  });
-};
+loadUser(10, admin, adminData);
+loadUser(10, standard, standardData);
 
 let users =  [...admin, ...standard];
 
