@@ -21,8 +21,8 @@ module.exports = (sequelize, DataTypes) => {
     image: DataTypes.STRING,
     description: DataTypes.STRING,
     deletedAt: {
-      type: Sequelize.DATE,
-      allowNull: false
+      type: DataTypes.DATE,
+      allowNull: false,
     }
   }, {
     sequelize,
