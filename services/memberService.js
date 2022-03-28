@@ -2,8 +2,8 @@ const { memberRepositoryCreate } = require('../repositories/memberRepository');
 
 
 
-const memberServiceCreate = (name, image) => {
-    return memberRepositoryCreate(name, image);
+const memberServiceCreate = (data) => {
+    return memberRepositoryCreate(data);
 }
 
 

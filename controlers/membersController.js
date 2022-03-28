@@ -5,18 +5,29 @@ const { memberServiceCreate } = require("../services/memberService");
 
 const postMembers = async (req = request, res = response) => {
 
-    const { name, image } = req.body;
+    const { 
+        name,
+        facebookUrl,
+        instagramUrl,
+        linkedinUrl,
+        image,
+        description, 
+    } = req.body;
 
-    const newMember = await memberServiceCreate(name, image)
+        const data={ 
+            name,
+            image,
+            facebookUrl,
+            instagramUrl,
+            linkedinUrl,
+            description,
+         }
+    const newMember = await memberServiceCreate(data)
 
-    res.status(201).json({
-        ok: 'ok',
+     return res.status(201).json({
         newMember
     })
-
 }
-
-
 
 
 module.exports = {

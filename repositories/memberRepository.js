@@ -1,7 +1,7 @@
 const db = require('../models')
 
-const memberRepositoryCreate = async (name, image) => {
-    const member = await db.members.create({ name, image })
+const memberRepositoryCreate = async (data) => {
+    const member = await db.members.create( data )
 
     return member
 }
