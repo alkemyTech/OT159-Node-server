@@ -10,6 +10,11 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const activitiesRouter = require('./routes/activities');
 const categoryRouter = require('./routes/categories');
+const newsRouter = require('./routes/news');
+const organizationRouter = require('./routes/organizationRoutes');
+const authRouter = require('./routes/auth');
+
+ 
 
 const app = express();
 app.use(cors())
@@ -25,9 +30,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/users', usersRouter); 
 app.use('/activities', activitiesRouter);
-app.use('/category',categoryRouter);
+app.use('/category',categoryRouter); 
+app.use('/news', newsRouter);
+app.use('/organization', organizationRouter);
+app.use('/auth', authRouter)
+
+ 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
