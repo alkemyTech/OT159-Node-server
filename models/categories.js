@@ -50,6 +50,8 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Category',
     timestamps: true,
+    paranoid: true,
+    deletedAt: 'destroyCategory'
   });
   return Category;
 };
