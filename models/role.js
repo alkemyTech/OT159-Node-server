@@ -25,8 +25,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    createdAt: DataTypes.DATE,
-    updatedAt: DataTypes.DATE,
     modelName: 'Role',
     paranoid: true
   });
