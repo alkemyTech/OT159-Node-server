@@ -1,4 +1,4 @@
-const { categoryServiceCreate } = require('../services/categoriesService')
+const { categoryServiceCreate, categoryServiceDetail } = require('../services/categoriesService')
 
 exports.create = async (req, res) => {
     try {
@@ -14,4 +14,17 @@ exports.create = async (req, res) => {
             msg:"the category has not been created"
         });
     }
+},
+exports.detail = async (req, res) => {
+    try {
+        const category = await categoryServiceDetail(req.params.id)        
+        if (!category) {
+            return res.status(404).json({
+                msg: 'The category does not exist',
+            });
+          }
+        return res.status(201).send(category);
+        } catch (error) {
+      res.status(500).send(error);
+    }    
 }
