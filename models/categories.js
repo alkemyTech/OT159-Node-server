@@ -38,11 +38,11 @@ module.exports = (sequelize, DataTypes) => {
       },
       beforeCreate: (category, options, fn) => {
         category.createdAt = new Date();
-        fn(null,cagetory)
+        fn(null,category)
       },
       beforeDestroy: (category, options, fn) => {
         category.deletedAt = new Date();
-        fn(null,cagetory)
+        fn(null,category)
       }
     },
   },
