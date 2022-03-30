@@ -1,0 +1,6 @@
+npx sequelize-cli model:generate --name Organization --attributes id:BIGINT,name:STRING,image:STRING,address:STRING,phone:INTEGER,email:STRING,welcomeText:STRING,aboutUSText:STRING
+npx sequelize-cli db:migrate
+npx sequelize-cli seed:generate --name demo-Organization
+npx sequelize-cli db:seed:all
+
+npx sequelize-cli db:seed:undo:all
