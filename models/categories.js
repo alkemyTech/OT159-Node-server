@@ -30,21 +30,6 @@ module.exports = (sequelize, DataTypes) => {
     deletedAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
     createdAt: DataTypes.DATE
-  },{
-    hooks: {
-      beforeUpdate: (category, options, fn) => {
-        category.updatedAt = new Date();
-        fn(null, category);
-      },
-      beforeCreate: (category, options, fn) => {
-        category.createdAt = new Date();
-        fn(null,cagetory)
-      },
-      beforeDestroy: (category, options, fn) => {
-        category.deletedAt = new Date();
-        fn(null,cagetory)
-      }
-    },
   },
   { 
     sequelize,
