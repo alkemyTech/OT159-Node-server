@@ -18,4 +18,12 @@ const controllerAddNews = async function (req, res, next) {
     }
 };
 
-module.exports = { controllerAddNews };
+const newsPutController=async(req,res)=>{
+
+res.status(200).json({
+    msg:'ok'
+})
+
+}
+
+module.exports = { controllerAddNews,newsPutController };
