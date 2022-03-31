@@ -11,3 +11,8 @@ module.exports.create = async(organizationData) => {
   const data = await db.Organization.create(organizationData)
   return data
 };
+
+module.exports.update = async(organizationData, id) => {
+  const data = await db.Organization.update(organizationData, { where: { id } })
+  return data
+};

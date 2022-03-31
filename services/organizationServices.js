@@ -7,4 +7,8 @@ module.exports.getData = () => {
 
 module.exports.create = (organizationData) => {
     return organizationRepository.create(organizationData);
-}
+};
+
+module.exports.update = (organizationData, id) => {
+    return organizationRepository.update(organizationData, id);
+};
