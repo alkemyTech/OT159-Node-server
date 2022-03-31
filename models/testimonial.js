@@ -1,4 +1,4 @@
-"use strict";
+"use strict"
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Testimonial extends Model {
