@@ -18,4 +18,15 @@ const controllerAddNews = async function (req, res, next) {
     }
 };
 
-module.exports = { controllerAddNews };
+const remove = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const removedNew = await serviceNews.remove(id);
+    return res.status(200).send('New with id ' + id + ' removed successfully');
+  } catch (error) {
+    if (error.message == 404) return res.send('New not found').status(404);
+    return res.status(500).send(error.message);
+  }
+};
+
+module.exports = { controllerAddNews, remove };

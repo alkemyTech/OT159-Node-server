@@ -3,4 +3,12 @@ const addNews = require('../repositories/news');
 const save = async(news) =>{
     return await addNews(news);
 }
-module.exports = {save};
+
+const remove = async (id) => {
+  try {
+    return await newsRepository.remove(id);
+  } catch (error) {
+    throw error;
+  }
+};
+module.exports = { save, remove };
