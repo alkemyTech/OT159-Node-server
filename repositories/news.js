@@ -9,5 +9,15 @@ async function addNews(news) {
     }
 
 }
+async function remove(id) {
+  try {
+    const foundNew = await DbNews.New.findByPk(id);
+    if (!foundNew) throw new Error(404);
+    const deletedNew = await foundNew.destroy();
+    return deletedNew;
+  } catch (error) {
+    throw error;
+  }
+}
 
-module.exports = addNews; 
+module.exports = { addNews, remove };
