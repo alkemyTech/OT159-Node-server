@@ -9,7 +9,7 @@ require('dotenv').config()
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const testimonialsRouter = require('./routes/testimonial');
-//const activitiesRouter = require('./routes/activities');
+const activitiesRouter = require('./routes/activities');
 const categoryRouter = require('./routes/categories');
 const newsRouter = require('./routes/news');
 const organizationRouter = require('./routes/organizationRoutes');
