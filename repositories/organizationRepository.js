@@ -6,3 +6,8 @@ module.exports.getAllData = async() => {
       })
     return data
 }
+
+module.exports.create = async(organizationData) => {
+  const data = await db.Organization.create(organizationData)
+  return data
+};

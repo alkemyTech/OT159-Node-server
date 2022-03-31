@@ -4,3 +4,7 @@ module.exports.getData = () => {
 
     return organizationRepository.getAllData();
 }
+
+module.exports.create = (organizationData) => {
+    return organizationRepository.create(organizationData);
+}
