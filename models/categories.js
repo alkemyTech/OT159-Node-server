@@ -31,22 +31,6 @@ module.exports = (sequelize, DataTypes) => {
     updatedAt: DataTypes.DATE,
     createdAt: DataTypes.DATE
   },
-  // },{
-  //   hooks: {
-  //     beforeUpdate: (category, options, fn) => {
-  //       category.updatedAt = new Date();
-  //       fn(null, category);
-  //     },
-  //     beforeCreate: (category, options, fn) => {
-  //       category.createdAt = new Date();
-  //       fn(null,category)
-  //     },
-  //     beforeDestroy: (category, options, fn) => {
-  //       category.deletedAt = new Date();
-  //       fn(null,category)
-  //     }
-  //   },
-  // },
   { 
     sequelize,
     modelName: 'Category',
