@@ -23,10 +23,18 @@ const postMembers = async (req = request, res = response) => {
             description,
          }
     const newMember = await memberServiceCreate(data)
-
-     return res.status(201).json({
-        newMember
-    })
+            try {
+                
+                return res.status(201).json({
+                    newMember
+                })
+            } catch (error) {
+                
+                console.log(error)
+                return res.status(500).json({
+                    msg:'something happened, please call the admin,'
+                })
+            }
 }
 
 
