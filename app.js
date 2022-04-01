@@ -8,6 +8,12 @@ require('dotenv').config()
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+
+const testimonialsRouter = require('./routes/testimonial');
+const categoryRouter = require('./routes/categories');
+const newsRouter = require('./routes/news');
+const organizationRouter = require('./routes/organizationRoutes');
+const authRouter = require('./routes/auth');
 const membersRouter = require('./routes/members');
 
 const app = express();
@@ -23,6 +29,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
+
+app.use('/users', usersRouter); 
+app.use('/category',categoryRouter); 
+app.use('/news', newsRouter);
+app.use('/organization', organizationRouter);
+app.use('/auth', authRouter)
+app.use('/testimonials', testimonialsRouter);
+
 
 app.use('/users', usersRouter);
 app.use('/members', membersRouter)
@@ -41,4 +55,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 module.exports = app;
