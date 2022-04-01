@@ -8,27 +8,42 @@ const errorWrapper = (req, res, next) => {
   next();
 };
 
-module.exports = [
-  check("name")
-  .notEmpty().withMessage("Name is required"),
+module.exports = { 
+  
+  orgCreateValidator : [
+    check("name").notEmpty().withMessage("Name is required"),
 
-  check("image")
-  .notEmpty().withMessage("Image is required"),
+    check("image").notEmpty().withMessage("Image is required"),
 
-  check("address")
-  .notEmpty().withMessage("Address is required"),
+    check("address").notEmpty().withMessage("Address is required"),
 
-  check("phone")
-  .notEmpty().withMessage("Phone is required").bail()
-  .isNumeric().withMessage("Only numbers are allowed"),
+    check("phone")
+      .notEmpty()
+      .withMessage("Phone is required")
+      .bail()
+      .isNumeric()
+      .withMessage("Only numbers are allowed"),
 
-  check("email")
-  .notEmpty().withMessage("Email is required").bail()
-  .isEmail().withMessage("Invalid Email"),
+    check("email")
+      .notEmpty()
+      .withMessage("Email is required")
+      .bail()
+      .isEmail()
+      .withMessage("Invalid Email"),
 
-  check("welcomeText").notEmpty().withMessage("WelcomeText is required"),
+    check("welcomeText").notEmpty().withMessage("WelcomeText is required"),
 
-  check("aboutUSText").notEmpty().withMessage("AboutUSText is required"), 
+    check("aboutUSText").notEmpty().withMessage("AboutUSText is required"),
 
-  errorWrapper
-];
+    errorWrapper,
+  ],
+
+  orgUpdateValidator : [
+    check("phone").isNumeric().withMessage("Only numbers are allowed"),
+
+    check("email").isEmail().withMessage("Invalid Email"),
+
+    errorWrapper,
+  ]
+
+};
