@@ -1,7 +1,7 @@
-const addNews = require('../repositories/news');
+const newsRepository = require('../repositories/news')
 
 const save = async(news) =>{
-    return await addNews(news);
+    return await newsRepository.addNews(news);
 }
 
 const remove = async (id) => {
