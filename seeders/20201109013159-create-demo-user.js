@@ -6,7 +6,7 @@ let adminData = {
   email: 'admin',
   password: 'adminPass',
   roleId: 1,
-  image: 'http://admin-image.com/'
+  photo: 'http://admin-image.com/'
 };
 
 let standardData = {
@@ -15,12 +15,12 @@ let standardData = {
   email: 'standard',
   password: 'standardPass',
   roleId: 2,
-  image: 'http://standard-image.com/'
+  photo: 'http://standard-image.com/'
 };
 
 function loadUser(cant, target, user) {
 
-  const { firstName, lastName, email, password, roleId, image } = user;
+  const { firstName, lastName, email, password, roleId, photo } = user;
   cant++; 
 
   for (let i = 1; i < cant; i++) {
@@ -30,7 +30,7 @@ function loadUser(cant, target, user) {
           email: `${email}${i}@demo.com`,
           password: `${password}${i}`,
           roleId,
-          image: `${image}${i}`,
+          photo: `${photo}${i}`,
           createdAt: new Date(),
           updatedAt: new Date()
       })      
