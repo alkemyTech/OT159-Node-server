@@ -22,9 +22,9 @@ const postMembers = async (req = request, res = response) => {
             linkedinUrl,
             description,
          }
-    const newMember = await memberServiceCreate(data)
+ 
             try {
-                
+                const newMember = await memberServiceCreate(data)
                 return res.status(201).json({
                     newMember
                 })
