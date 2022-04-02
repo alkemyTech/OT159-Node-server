@@ -1,5 +1,4 @@
 const DbNews = require('../models');
-const { put } = require('../routes');
 
 async function addNews(news) {
     try {
@@ -11,13 +10,10 @@ async function addNews(news) {
 
 }
 const putNewsRepository=async(id,data)=>{
-
-    const putNew=await DbNews.findByPk(id);
-
+    const putNew=await DbNews.New.findByPk(id);
     putNew.update(data)
-
     return putNew
-
+     
 }
 
 
