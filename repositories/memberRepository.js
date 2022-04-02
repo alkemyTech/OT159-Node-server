@@ -6,10 +6,13 @@ const memberRepositoryCreate = async (data) => {
     return member
 }
 
+const memberRepositoryList = async (data) => {
+    const getMembers = await db.members.findAll(data)
 
-
-
+    return getMembers
+}
 
 module.exports = {
-    memberRepositoryCreate
+    memberRepositoryCreate,
+    memberRepositoryList
 }

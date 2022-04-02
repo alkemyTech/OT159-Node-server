@@ -1,5 +1,5 @@
 const { request, response } = require("express");
-const { memberServiceCreate } = require("../services/memberService");
+const { memberServiceCreate, memberServiceList } = require("../services/memberService");
 
 
 
@@ -38,6 +38,26 @@ const postMembers = async (req = request, res = response) => {
 }
 
 
+const listMembers = {
+
+    list: async (req, res)  => {
+
+        const allMembers = await memberServiceList();
+
+        let response = {
+            meta: {
+                status : 200,
+                total: allMembers.length,
+                url: '/members'
+            },
+            data: allMembers  
+        }
+        
+        res.json(response);
+    }
+}
+
 module.exports = {
-    postMembers
+    postMembers, 
+    listMembers
 }
