@@ -37,6 +37,19 @@ const postMembers = async (req = request, res = response) => {
             }
 }
 
+const deleteMember = async (req, res) => {
+    try {
+        await memberServiceDelete(req.params.id);
+        return res.status(200).json({
+            msg: 'Member deleted successfully'
+        })
+    } catch (error) {
+        return res.status(500).json({
+                    msg:'something happened, please call the admin,'
+        })
+    }
+}
+
 
 module.exports = {
     postMembers
