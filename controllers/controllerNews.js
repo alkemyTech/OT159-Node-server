@@ -21,7 +21,7 @@ const controllerFindById = async function (req, res, next){
     try {
         const id = req.params.id
         const findNew = await serviceNews.FindById(id);
-        res.status(201).json(findNew);
+        res.status(200).json(findNew);
         return findNew;
     } catch (error) {
         next(error)

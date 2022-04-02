@@ -5,6 +5,6 @@ const save = async (news) => {
 };
 
 const FindById = async(id) => {
-    return await findNewsById(id)
+    return findNewsById(id)
 };
 module.exports = { save, FindById };
