@@ -6,10 +6,15 @@ const memberRepositoryCreate = async (data) => {
     return member
 }
 
+const memberRepositoryDelete = async (id) => {
+    const member = await db.members.findByPk(id);
 
+    return member.destroy();
+}
 
 
 
 module.exports = {
-    memberRepositoryCreate
+    memberRepositoryCreate,
+    memberRepositoryDelete
 }
