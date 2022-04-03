@@ -1,15 +1,9 @@
-const ActivityRepository = require('../repositories/activitiesRepository');
-const repository = new ActivityRepository();
+const activitiesRepository = require('../repositories/activitiesRepository');
 
-const findAll = async (id) => {
-    return await repository.findAll();
-}
-
-const findById = async (id) => {
-    return await repository.findAll();
+const createNewActivity = (activityDataFields) => {
+    return activitiesRepository.createNewActivity(activityDataFields)
 }
 
 module.exports = {
-    findAll,
-    findById
+    createNewActivity
 }
