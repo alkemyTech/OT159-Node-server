@@ -1,6 +1,5 @@
 const db = require('../models')
 const { passwordConverting } = require('../helpers/encryptionHelper')
-const bcrypt = require('bcryptjs')
 
 module.exports.createNewUser = async (userDatafields) => {
     const newUser = await db.User.create(userDatafields)
