@@ -1,14 +1,10 @@
-const Activities = require('../models/activities');
+const db = require('../models')
 
-class ActivitiesRepository {
-
-    async findAll() {
-        return await Activities.findAll();
-    }
-
-    async findById(id) {
-        return await Activities.findByPk(id);
-    }
+const createNewActivity = async (activityDataFields) => {
+    const newActivity = await db.Activities.create(activityDataFields)
+    return newActivity
 }
 
-module.exports = ActivitiesRepository;
+module.exports = { 
+    createNewActivity 
+}
