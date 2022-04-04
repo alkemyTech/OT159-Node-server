@@ -1,5 +1,5 @@
 const { request, response } = require("express");
-const { memberServiceCreate } = require("../services/memberService");
+const { memberServiceCreate, memberServiceDelete } = require("../services/memberService");
 
 
 
@@ -21,7 +21,8 @@ const postMembers = async (req = request, res = response) => {
             instagramUrl,
             linkedinUrl,
             description,
-         }
+        }
+    
  
             try {
                 const newMember = await memberServiceCreate(data)
@@ -45,12 +46,13 @@ const deleteMember = async (req, res) => {
         })
     } catch (error) {
         return res.status(500).json({
-                    msg:'something happened, please call the admin,'
+                    msg:'Something happened, please call the admin'
         })
     }
 }
 
 
 module.exports = {
-    postMembers
+    postMembers,
+    deleteMember
 }

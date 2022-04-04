@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const { postMembers}=require('../controllers/membersController');
+const { postMembers, deleteMember}=require('../controllers/membersController');
 const  {validateMember} = require('../middlewares/memberMidldlewar');
 const router = Router();
 
@@ -12,5 +12,7 @@ router.post('/',
 ],
 postMembers
 )
+
+router.delete('/:id', deleteMember);
 
 module.exports = router;

@@ -7,8 +7,8 @@ const memberServiceCreate = (data) => {
 }
 
 const memberServiceDelete = (id) => {
-    return memberServiceDelete(id);
+    return memberRepositoryDelete(id);
 }
 
 
-module.exports = { memberServiceCreate, memberRepositoryDelete }
+module.exports = { memberServiceCreate, memberServiceDelete }
