@@ -33,10 +33,10 @@ const put = async (req, res) => {
   } catch (error) {
       res.status(500).json({ 
         error,
-        msg:"the category has not been updated"
+        msg:"the testimonial has not been updated"
       });
   }
-};
+}
 
 module.exports = {
   create,
