@@ -19,7 +19,7 @@ const put = async (req, res) => {
   const { name, image, content } = req.body;
   const {id} = req.params;
   try {
-      if(testimonialService.getTestimonialById==null){
+      if(testimonialService.getTestimonialById(id) == null){
         res.status(404).json({  
           msg:`the id: ${id} does not exist`
         });
