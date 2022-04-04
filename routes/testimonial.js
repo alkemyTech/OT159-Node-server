@@ -5,5 +5,6 @@ const validateTestimonial = require("../middlewares/validations/testimonial");
 const {authorize} = require('../middlewares/checkRole')
 
 router.post("/", authorize(), validateTestimonial, testimonialController.create);
+router.put("/:id", authorize(), validateTestimonial, testimonialController.put);
 
 module.exports = router;
