@@ -16,14 +16,15 @@ exports.create = async (req, res) => {
     }
 },
 exports.detail = async (req, res) => {
+    const { id } = req.params
     try {
-        const category = await categoryServiceDetail(req.params.id)        
+        const category = await categoryServiceDetail(id)        
         if (!category) {
             return res.status(404).json({
                 msg: 'The category does not exist',
             });
           }
-        return res.status(201).send(category);
+        return res.status(200).send(category);
         } catch (error) {
       res.status(500).send(error);
     }    
