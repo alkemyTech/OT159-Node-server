@@ -10,6 +10,13 @@ create = async (name, image, content) => {
   return newTestimonial;
 };
 
+const remove = async (id)=>{
+  const testimonial = await models.Testimonial.create({id});
+  testimonial.destroy();
+  return testimonial;
+}
+
 module.exports = {
   create,
+  remove
 };
