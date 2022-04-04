@@ -32,7 +32,7 @@ const remove = async (req, res) => {
   } catch (error) {
       res.status(500).json({ 
         error,
-        msg:"the category has not been created"
+        msg:"the testimonial has not been deleted"
       });
   }
 }
