@@ -39,15 +39,16 @@ const postMembers = async (req = request, res = response) => {
 }
 
 const deleteMember = async (req, res) => {
+    const { id } = req.params;
     try {
-        await memberServiceDelete(req.params.id);
+        await memberServiceDelete(id);
         return res.status(200).json({
             msg: 'Member deleted successfully'
         })
     } catch (error) {
-        return res.status(500).json({
-                    msg:'Something happened, please call the admin'
-        })
+        return res.status(error.status).send({
+            message: error.message
+        });
     }
 }
 

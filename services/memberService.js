@@ -1,7 +1,5 @@
 const { memberRepositoryCreate, memberRepositoryDelete } = require('../repositories/memberRepository');
 
-
-
 const memberServiceCreate = (data) => {
     return memberRepositoryCreate(data);
 }
