@@ -42,18 +42,29 @@ const listMembers = {
 
     list: async (req, res)  => {
 
-        const allMembers = await memberServiceList();
+        try {
 
-        let response = {
-            meta: {
-                status : 200,
-                total: allMembers.length,
-                url: '/members'
-            },
-            data: allMembers  
+            const allMembers = await memberServiceList();
+
+            let response = {
+                meta: {
+                    status : 200,
+                    total: allMembers.length,
+                    url: '/members'
+                },
+                data: allMembers  
+            }
+            
+            res.json(response);
+
+        } catch (error) {
+                
+            console.log(error)
+            return res.status(504).json({
+                msg:'Gateway Timeout'
+            })
         }
-        
-        res.json(response);
+
     }
 }
 
