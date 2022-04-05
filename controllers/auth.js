@@ -13,14 +13,14 @@ const register = async (req, res, next) => {
 }
 
 const login = async (req, res, next) => {
-    const err = "{ok:false}"
-    const { email, password } = req.body
-    const user = await usersService.userLogin(email, password);
     try {
+        const { email, password } = req.body
+        const user = await usersService.userLogin(email, password);
+        const err = "{ok:false}"
         if (user) {
             res.status(200).json({ user });
             return
-        } res.status(401).json({ err });
+        } res.status(404).json({ err });
         return
     } catch (error) {
         next(error)

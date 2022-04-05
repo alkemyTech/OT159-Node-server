@@ -1,5 +1,4 @@
 const db = require('../models')
-const { passwordConverting } = require('../helpers/encryptionHelper')
 
 module.exports.createNewUser = async (userDatafields) => {
     const newUser = await db.User.create(userDatafields)
@@ -9,10 +8,8 @@ module.exports.createNewUser = async (userDatafields) => {
 module.exports.findMailUser = async (email, password) => {
     const userMail = await db.User.findOne({ where: { email: email } });
     if (userMail) {
-        const passwordConvert = await passwordConverting(password, userMail.password);
-        if (passwordConvert) {
-            return userMail
-        }
+        return userMail
     }
 }
+
 
