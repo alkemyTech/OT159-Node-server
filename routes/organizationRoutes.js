@@ -5,7 +5,7 @@ const {orgCreateValidator, orgUpdateValidator} = require('../middlewares/validat
 const {authorize} = require('../middlewares/checkRole');
 
 router.get('/public', organizationController.showData);
-router.post('/public', authorize(), orgCreateValidator, organizationController.create);
-router.put('/public/:id', authorize(), orgUpdateValidator, organizationController.update);
+router.post('/public', authorize(), orgCreateValidator, organizationController.createOrganization);
+router.put('/public/:id', authorize(), orgUpdateValidator, organizationController.updateOrganization);
 
 module.exports = router;

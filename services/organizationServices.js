@@ -5,10 +5,10 @@ module.exports.getData = () => {
     return organizationRepository.getAllData();
 }
 
-module.exports.create = (organizationData) => {
-    return organizationRepository.create(organizationData);
+module.exports.createOrganization = (organizationData) => {
+    return organizationRepository.createOrganization(organizationData);
 };
 
-module.exports.update = (organizationData, id) => {
-    return organizationRepository.update(organizationData, id);
+module.exports.updateOrganization = (organizationData, id) => {
+    return organizationRepository.updateOrganization(organizationData, id);
 };

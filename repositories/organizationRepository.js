@@ -7,12 +7,12 @@ module.exports.getAllData = async() => {
     return data
 }
 
-module.exports.create = async(organizationData) => {
+module.exports.createOrganization = async(organizationData) => {
   const data = await db.Organization.create(organizationData)
   return data
 };
 
-module.exports.update = async(organizationData, id) => {
+module.exports.updateOrganization = async(organizationData, id) => {
   const data = await db.Organization.update(organizationData, { where: { id } })
   return data
 };

@@ -3,7 +3,7 @@ const { check, validationResult } = require("express-validator");
 const errorWrapper = (req, res, next) => {
   const result = validationResult(req);
   if (!result.isEmpty()) {
-    return res.status(400).send(result);
+    return res.status(404).send(result);
   }
   next();
 };
