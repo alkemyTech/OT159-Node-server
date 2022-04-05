@@ -1,14 +1,13 @@
-const newsRepository = require('../repositories/news')
+const newsRepository = require('../repositories/news');
 
-const save = async(news) =>{
-    return await newsRepository.addNews(news);
-}
+const save = async (news) => {
+  return await newsRepository.addNews(news);
+};
 
 const remove = async (id) => {
-  try {
-    return await newsRepository.remove(id);
-  } catch (error) {
-    throw error;
-  }
+  const deletedCount = await newsRepository.remove(id);
+  if (!deletedCount) throw { name: 'New not found', code: 404 };
+  return deletedCount;
 };
+
 module.exports = { save, remove };

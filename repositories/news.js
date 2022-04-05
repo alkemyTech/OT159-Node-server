@@ -1,22 +1,19 @@
 const DbNews = require('../models');
 
 async function addNews(news) {
-    try {
-        const novedades = await DbNews.New.create(news);
-        return novedades;
-    } catch (error) {
-        throw new Error('Wrong information');
-    }
-
+  try {
+    const novedades = await DbNews.New.create(news);
+    return novedades;
+  } catch (error) {
+    throw new Error('Wrong information');
+  }
 }
 async function remove(id) {
   try {
-    const foundNew = await DbNews.New.findByPk(id);
-    if (!foundNew) throw new Error(404);
-    const deletedNew = await foundNew.destroy();
-    return deletedNew;
+    const deletedCount = await DbNews.New.destroy({ where: { id: id } });
+    return deletedCount;
   } catch (error) {
-    throw error;
+    throw { name: error.name, code: 500 };
   }
 }
 
