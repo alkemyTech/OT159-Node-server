@@ -19,6 +19,7 @@ const verifyToken = (req, res, next) => {
   if (!authHeader) res.status(401).send('Unauthorized');
   jwt.verify(authHeader, jwtKey, function (error, decoded) {
     if (error) return res.status(500).send({ auth: false, message: error });
+    req.user = decoded;
     next();
   });
 };
