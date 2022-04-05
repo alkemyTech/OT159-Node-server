@@ -5,11 +5,6 @@ const categoryRepositoryCreate = async (name, description, image) => {
     return category
 }
 
-const categoryRepositoryGetAll = async () => {
-    const categories = await db.Category.findAll({ attributes: ['name'] });
-    return categories;
-}
 module.exports = {
     categoryRepositoryCreate,
-    categoryRepositoryGetAll
 }
