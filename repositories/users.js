@@ -7,9 +7,7 @@ module.exports.createNewUser = async (userDatafields) => {
 
 module.exports.findMailUser = async (email, password) => {
     const userMail = await db.User.findOne({ where: { email: email } });
-    if (userMail) {
-        return userMail
-    }
+    return userMail
 }
 
 
