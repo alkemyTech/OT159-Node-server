@@ -24,21 +24,7 @@ const verifyToken = (req, res, next) => {
   });
 };
 
-const sendToken = (req, res) => {
-  const user = req.user;
-  if (user) {
-    try {
-      const token = createToken(user);
-      return res.status(200).send({ user: user, token: token });
-    } catch (err) {
-      return res.status(500).send('Something went wrong.');
-    }
-  }
-  return res.status(500).send('Could not authenticate');
-};
-
 module.exports = {
   createToken,
   verifyToken,
-  sendToken,
 };
