@@ -1,6 +1,5 @@
 const serviceNews = require('../services/news');
 const {request,response}=require('express');
-const { putNewsRepository } = require('../repositories/news');
 
 const controllerAddNews = async function (req, res, next) {
     try {
@@ -29,20 +28,23 @@ const newsPutController=async(req=request,res=response)=>{
         image
         //, categoryId
     }
+   
     try {
-            const putNew=await serviceNews.putNewService(id,data)
-          
-           return res.status(200).json({
-                putNew
-            })
+     const putNew = await serviceNews.putNewService(id,data)
 
-        } catch (error) {
-            console.log(`the id ${id} does not exist or it is null, please check it`)
-            console.log(`here is the error ${error}`)
-           res.status(400).json({
-            msg:'something was bad, please call check it'
-           })
-        }
+        if(putNew[0]===0){
+            return res.status(500).json({
+                msg:`the ${id} does not exist or is wrong, please check it`
+            })}
+
+       return res.status(200).json({
+            msg:'the update was successfully'
+        })
+    
+    } catch (error) {
+     throw new Error('something was bad, please check it')
+    
+     }
 }
 
 module.exports = { controllerAddNews,newsPutController };

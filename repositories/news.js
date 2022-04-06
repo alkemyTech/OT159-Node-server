@@ -10,10 +10,11 @@ async function addNews(news) {
 
 }
 const putNewsRepository=async(id,data)=>{
-    const putNew=await DbNews.New.findByPk(id);
-    putNew.update(data)
-    return putNew
-     
+
+
+    const putNew = await DbNews.New.update(data,{where:{id:id}});
+
+     return putNew
 }
 
 
