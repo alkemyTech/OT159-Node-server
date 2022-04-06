@@ -1,5 +1,5 @@
 const { request, response } = require("express");
-const { memberServiceCreate } = require("../services/memberService");
+const { memberServiceCreate, memberServiceDelete } = require("../services/memberService");
 
 
 
@@ -37,7 +37,21 @@ const postMembers = async (req = request, res = response) => {
             }
 }
 
+const deleteMember = async (req, res) => {
+    const { id } = req.params;
+    try {
+        await memberServiceDelete(id);
+        return res.status(200).json({
+            msg: 'Member deleted successfully'
+        })
+    } catch (error) {
+        return res.status(error.status).send({
+            message: error.message
+        });
+    }
+}
 
 module.exports = {
-    postMembers
+    postMembers,
+    deleteMember
 }
