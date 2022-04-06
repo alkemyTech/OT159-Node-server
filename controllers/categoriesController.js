@@ -16,16 +16,15 @@ exports.create = async (req, res) => {
     }
 }
 
-exports.get = async (req, res) => {
+exports.getAllCategories = async (req, res) => {
     try {
         const categories = await categoryServiceGetAll();
         res.status(200).json({
             categories
-        })
+        });
     } catch (error) {
-        res.status(500).json({
-            error,
-            msg: "Couldn't find any categories"
+        return res.status(500).send({
+            error: "Something went wrong"
         });
     }
 }

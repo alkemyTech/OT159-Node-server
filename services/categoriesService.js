@@ -7,8 +7,9 @@ const categoryServiceCreate = (name,description, image) => {
   return categoryRepositoryCreate(name, description, image);
 };
 
-const categoryServiceGetAll = () => {
-  return categoryRepositoryGetAll();
+const categoryServiceGetAll = async() => {
+  const categories = await categoryRepositoryGetAll();
+  return categories;
 }
 
 module.exports = {
