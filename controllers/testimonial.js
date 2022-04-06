@@ -1,4 +1,3 @@
-
 const testimonialService = require("../services/testimonial");
 
 create = async (req, res) => {
@@ -14,7 +13,19 @@ create = async (req, res) => {
     res.status(500).send(error);
   }
 };
-module.exports = {
-  create,
+
+const remove = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const testimonial = testimonialService.remove(id)(testimonial == 0)
+      ? res.status(200).json({ msg: "the testimonial has been deleted" })
+      : res.status(404).json({ msg: `the id: ${id} does not exist` });
+  } catch (error) {
+    res.status(500).json({ msg: "the testimonial has not been deleted" });
+  }
 };
 
+module.exports = {
+  create,
+  remove,
+};
