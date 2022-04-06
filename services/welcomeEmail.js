@@ -1,32 +1,23 @@
 const sgMail = require('@sendgrid/mail');
 
-const API_KEY = process.env.API_KEY;
-const TEMPLATE_ID = process.env.TEMPLATE_ID;
+function sendWelcomeEmail(api_key, to, from, template_id) {
 
-function sendWelcomeEmail(to, from, templateId, dynamic_template_data) {
-
-    sgMail.setApiKey(API_KEY);
+    sgMail.setApiKey(api_key);
 
     const msg = {
-        to: req.body.email,
-        from: {
-            name: "ONG - Somos Más",
-            email:"somosfundacionmas@gmail.com",
-            subject: "Bievenido a la fundación Somos Más",
-        },
-        templateId: TEMPLATE_ID,
-        dynamic_template_data: {
-            subject: 'WelcomeEmailTemplate',
-            name: 'alkemyProject'
-          },
+        to: to,
+        from: from,
+        templateId: template_id,
     };
     
     sgMail.send(msg)
         .then(() => {
-            console.log('Email sent')
+            const emailStatus = {sended: true, status:200};
+            console.log(emailStatus);
         })
         .catch((error) => {
-            console.error(error)
+            const emailStatus = {sended: false, status: error.code};
+            console.log(emailStatus);
         })
 }
 
