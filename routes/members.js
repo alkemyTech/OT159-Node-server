@@ -1,6 +1,6 @@
 const { Router } = require('express')
 const { postMembers}=require('../controllers/membersController');
-const  {validateMember} = require('../middlewares/memberMidldlewar');
+const  {validateMember} = require('../middlewares/validations/members');
 const router = Router();
 
 
