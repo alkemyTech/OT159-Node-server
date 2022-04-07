@@ -1,13 +1,5 @@
 const { check, validationResult } = require("express-validator");
-
-const errorWrapperFunction = (req, res, next) => {
-  const result = validationResult(req);
-  const hasErrors = !result.isEmpty();
-  if (hasErrors) {
-    return res.status(422).send(result);
-  }
-  next();
-};
+const errorWrapperFunction = require('.');
 
 const validateTestimonial = [
   check("name").notEmpty().withMessage("Name can not be empty").bail(),

@@ -39,7 +39,6 @@ app.use('/auth', authRouter)
 app.use('/testimonials', testimonialsRouter);
 app.use('/activities', activitiesRouter)
 
-
 app.use('/users', usersRouter);
 app.use('/members', membersRouter)
 // catch 404 and forward to error handler
