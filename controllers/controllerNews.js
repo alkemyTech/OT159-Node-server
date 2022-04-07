@@ -25,7 +25,7 @@ const controllerFindById = async function (req, res, next){
         return findNew;
     } catch (error) {
         next(error)
-        throw new Error("something happened")
+        return res.status(404).json({msg:'not found'});
     }
 }
 
