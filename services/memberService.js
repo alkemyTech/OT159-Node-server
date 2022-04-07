@@ -5,8 +5,8 @@ const memberServiceCreate = (data) => {
     return memberRepositoryCreate(data);
 }
 
-const memberServiceList = (data) => {
-    return memberRepositoryList(data);
+const memberServiceList = () => {
+    return memberRepositoryList();
 }
 
 

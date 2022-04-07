@@ -60,8 +60,8 @@ const listMembers = {
         } catch (error) {
                 
             console.log(error)
-            return res.status(504).json({
-                msg:'Gateway Timeout'
+            return res.status(500).json({
+                msg:'Internal Server Error'
             })
         }
 

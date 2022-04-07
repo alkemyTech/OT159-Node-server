@@ -6,8 +6,8 @@ const memberRepositoryCreate = async (data) => {
     return member
 }
 
-const memberRepositoryList = async (data) => {
-    const getMembers = await db.members.findAll(data)
+const memberRepositoryList = async () => {
+    const getMembers = await db.members.findAll()
 
     return getMembers
 }
