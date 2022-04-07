@@ -4,6 +4,6 @@ const { validateCreate } = require('../validators/categories');
 
 //crear usuario
 router.post('/', validateCreate, create);
-router.get('/', getAllCategories);
+router.get('/', validateCreate, getAllCategories);
 
 module.exports = router;
