@@ -17,9 +17,10 @@ create = async (req, res) => {
 const remove = async (req, res) => {
   try {
     const { id } = req.params;
-    const testimonial = testimonialService.remove(id)(testimonial == 0)
+    const testimonial = testimonialService.remove(id)
+    (testimonial == 0)
       ? res.status(200).json({ msg: "the testimonial has been deleted" })
-      : res.status(404).json({ msg: `the id: ${id} does not exist` });
+      : res.status(404).json({ msg: `the id: ${id} does not exist` })
   } catch (error) {
     res.status(500).json({ msg: "the testimonial has not been deleted" });
   }
