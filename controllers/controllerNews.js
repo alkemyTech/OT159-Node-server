@@ -33,7 +33,7 @@ const newsPutController=async(req=request,res=response)=>{
      const putNew = await serviceNews.putNewService(id,data)
 
         if(putNew[0]===0){
-            return res.status(500).json({
+            return res.status(404).json({
                 msg:`the ${id} does not exist or is wrong, please check it`
             })}
 
