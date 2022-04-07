@@ -1,5 +1,10 @@
 const db = require('../models')
 
+const createNewActivity = async (activityDataFields) => {
+    const newActivity = await db.Activities.create(activityDataFields)
+    return newActivity
+}
+
 const updateActivity = async (activityDataFields, id) => {
     const activity = await db.Activities.update(activityDataFields, {
         where: {
@@ -10,5 +15,6 @@ const updateActivity = async (activityDataFields, id) => {
 }
 
 module.exports = {
+    createNewActivity,
     updateActivity
 }
