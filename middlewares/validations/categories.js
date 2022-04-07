@@ -1,6 +1,6 @@
 const {check} = require('express-validator'); 
-const { validateCategory } = require('../middlewares/validateCategories');
-const { isAdminRole, haveRole } = require('../middlewares/validateRoles');
+const { validateCategory } = require('../validateCategories');
+const { isAdminRole, haveRole } = require('../validateRoles');
 
 const validateCreate = [
     isAdminRole, // valida que el usuario tenga el rol de administrador
