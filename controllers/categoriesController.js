@@ -1,4 +1,5 @@
-const { categoryServiceCreate, categoryServiceDetail } = require('../services/categoriesService')
+const { categoryServiceCreate, categoryServiceDetail, categoryServiceGetAll } = require('../services/categoriesService')
+
 
 exports.create = async (req, res) => {
     try {
@@ -28,4 +29,17 @@ exports.detail = async (req, res) => {
         } catch (error) {
       res.status(500).send(error);
     }    
+}
+
+exports.getAllCategories = async (req, res) => {
+    try {
+        const categories = await categoryServiceGetAll();
+        res.status(200).json({
+            categories
+        });
+    } catch (error) {
+        return res.status(500).send({
+            error: "Something went wrong"
+        });
+    }
 }
