@@ -16,5 +16,14 @@ async function remove(id) {
     throw { name: error.name, code: 500 };
   }
 }
+const putNewsRepository=async(id,data)=>{
 
-module.exports = { addNews, remove };
+
+    const putNew = await DbNews.New.update(data,{where:{id:id}});
+
+     return putNew
+}
+
+
+
+module.exports = {addNews,putNewsRepository, remove}; 

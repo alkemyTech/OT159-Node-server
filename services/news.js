@@ -1,8 +1,13 @@
+const {addNews,putNewsRepository} = require('../repositories/news');
 const newsRepository = require('../repositories/news');
 
-const save = async (news) => {
-  return await newsRepository.addNews(news);
-};
+const save = async(news) =>{
+    return await addNews(news);
+}
+
+const putNewService=async(id,data)=>{
+    return await putNewsRepository(id,data)
+}
 
 const remove = async (id) => {
   const deletedCount = await newsRepository.remove(id);
@@ -10,4 +15,4 @@ const remove = async (id) => {
   return deletedCount;
 };
 
-module.exports = { save, remove };
+module.exports = { save, putNewService, remove };
