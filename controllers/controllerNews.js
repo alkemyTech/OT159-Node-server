@@ -2,7 +2,7 @@ const serviceNews = require('../services/news');
 
 const controllerAddNews = async function (req, res, next) {
     try {
-        const { name, content, image , categoryId } = req.body
+        const { name, content, image, categoryId } = req.body
         const data = {
             name,
             content,
@@ -17,15 +17,17 @@ const controllerAddNews = async function (req, res, next) {
         throw new Error("something happened")
     }
 };
-const controllerFindById = async function (req, res, next){
+const controllerFindById = async function (req, res, next) {
     try {
         const id = req.params.id
         const findNew = await serviceNews.FindById(id);
+        if (findNew === null) {
+            res.status(404).json({ msg: 'not found' });
+        }
         res.status(200).json(findNew);
         return findNew;
     } catch (error) {
         next(error)
-        return res.status(404).json({msg:'not found'});
     }
 }
 
