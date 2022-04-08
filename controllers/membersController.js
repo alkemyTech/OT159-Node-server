@@ -1,7 +1,5 @@
 const { request, response } = require("express");
-const { memberServiceCreate, memberServiceDelete } = require("../services/memberService");
-
-
+const { memberServiceCreate, memberServiceList, memberServiceDelete } = require("../services/memberService");
 
 const postMembers = async (req = request, res = response) => {
 
@@ -51,7 +49,37 @@ const deleteMember = async (req, res) => {
     }
 }
 
+const listMembers = {
+
+    list: async (req, res)  => {
+
+        try {
+
+            const allMembers = await memberServiceList();
+
+            let response = {
+                meta: {
+                    status : 200,
+                    total: allMembers.length,
+                    url: '/members'
+                },
+                data: allMembers  
+            }
+            
+            res.json(response);
+
+        } catch (error) {
+                
+            return res.status(500).json({
+                msg:'Internal Server Error'
+            })
+        }
+
+    }
+}
+
 module.exports = {
-    postMembers,
+    postMembers, 
+    listMembers,
     deleteMember
 }
