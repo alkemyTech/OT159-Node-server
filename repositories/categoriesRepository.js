@@ -9,7 +9,16 @@ const categoryRepositoryGetAll = async () => {
     const categories = await db.Category.findAll({ attributes: ['name'] });
     return categories;
 }
+
+const categoryRepositoryDetail = async (id) => {
+    const category = await db.Category.findOne({
+      where: { id },
+    });
+    return category;
+  };
+
 module.exports = {
     categoryRepositoryCreate,
+    categoryRepositoryDetail,
     categoryRepositoryGetAll
 }

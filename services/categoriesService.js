@@ -1,6 +1,7 @@
 const {
   categoryRepositoryCreate,
-  categoryRepositoryGetAll
+  categoryRepositoryGetAll,
+  categoryRepositoryDetail
 } = require("../repositories/categoriesRepository");
 
 const categoryServiceCreate = (name,description, image) => {
@@ -12,7 +13,12 @@ const categoryServiceGetAll = async() => {
   return categories;
 }
 
+const categoryServiceDetail = id => {
+  return categoryRepositoryDetail(id)
+};
+
 module.exports = {
   categoryServiceCreate,
+  categoryServiceDetail,
   categoryServiceGetAll
 };
