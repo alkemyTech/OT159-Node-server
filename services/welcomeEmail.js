@@ -1,6 +1,6 @@
 const sgMail = require('@sendgrid/mail');
 
-function sendWelcomeEmail(api_key, to, from, template_id) {
+const sendWelcomeEmail = async (api_key, to, from, template_id) => {
 
     sgMail.setApiKey(api_key);
 
@@ -10,15 +10,18 @@ function sendWelcomeEmail(api_key, to, from, template_id) {
         templateId: template_id,
     };
     
-    sgMail.send(msg)
-        .then(() => {
-            const emailStatus = {sended: true, status:200};
-            console.log(emailStatus);
-        })
-        .catch((error) => {
-            const emailStatus = {sended: false, status: error.code};
-            console.log(emailStatus);
-        })
+    
+
+    try {
+        await sgMail.send(msg)
+        const emailStatus = {sended: true, status:200};
+        return emailStatus;
+
+    } catch(error) {
+        const emailStatus = {sended: false, status: error.code};
+        return emailStatus;
+        
+    }
 }
 
 module.exports = sendWelcomeEmail;
