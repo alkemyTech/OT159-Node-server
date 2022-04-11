@@ -9,8 +9,9 @@ const register = async(req, res, next) => {
         const newUser = await createNewUser({firstName, lastName, email, photo, roleId, password: passwordEncrypted})
         const checkSendemail = await sendEmail(email);
         if(!checkSendemail){
-            return res.status(500).json({
-                msg:'Internal Error Server'
+            return res.status(201).json({
+                msg:'We can not send your welcome, do not worry. Your user was successfully',
+                newUser
             })
         }
         res.status(201).json({newUser})
