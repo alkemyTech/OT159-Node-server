@@ -5,8 +5,8 @@ const jwtKey = process.env.JWT_KEY;
 const jwtExpirySeconds = 600;
 
 //Used to create and send a token to the user after a successfull LogIn
-const createToken = (username, role) => {
-  const token = jwt.sign({ username, role }, jwtKey, {
+const createToken = (user) => {
+  const token = jwt.sign({ user }, jwtKey, {
     algorithm: 'HS256',
     expiresIn: jwtExpirySeconds,
   });
