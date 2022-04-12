@@ -17,8 +17,14 @@ const categoryRepositoryDetail = async (id) => {
     return category;
   };
 
+const categoryRepositoryDelete = async (id) => {
+  const deletedCount = await db.Category.destroy({ where: {id: id} });
+  return deletedCount;
+}
+
 module.exports = {
     categoryRepositoryCreate,
     categoryRepositoryDetail,
-    categoryRepositoryGetAll
+    categoryRepositoryGetAll,
+    categoryRepositoryDelete
 }

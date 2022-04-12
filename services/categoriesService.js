@@ -1,7 +1,8 @@
 const {
   categoryRepositoryCreate,
   categoryRepositoryGetAll,
-  categoryRepositoryDetail
+  categoryRepositoryDetail,
+  categoryRepositoryDelete
 } = require("../repositories/categoriesRepository");
 
 const categoryServiceCreate = (name,description, image) => {
@@ -17,8 +18,15 @@ const categoryServiceDetail = id => {
   return categoryRepositoryDetail(id)
 };
 
+const categoryServiceDelete = async (id) => {
+  const deleteCount = await categoryRepositoryDelete(id);
+  if(!deleteCount) throw ({'code':404,'name':'Category Not Found'})
+  return deleteCount;
+}
+
 module.exports = {
   categoryServiceCreate,
   categoryServiceDetail,
-  categoryServiceGetAll
+  categoryServiceGetAll,
+  categoryServiceDelete
 };
