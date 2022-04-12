@@ -18,7 +18,7 @@ const remove = async (req, res) => {
   try {
     const { id } = req.params;
     const testimonial = await testimonialService.remove(id)
-    if(testimonial == 0){
+    if(testimonial === 0){
       res.status(200).json({ msg: "the testimonial has been deleted" })
     }else{
       res.status(404).json({ msg: `the id: ${id} does not exist` })
