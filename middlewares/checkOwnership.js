@@ -1,13 +1,21 @@
-const db = require("../database/models");
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+const db = require("../models");
 
 const isOwnership = async (req, res, next) => {
   const { id } = req.params;
-  const user = await db.User.findOne({ where: { id: id } });
   const token = req.headers["authorization"];
-  const decoded = await jwt.verify(token, process.env.SECRET);
-  const userTokenId = await db.User.findOne({ where: { id: decoded.id } });
-  if (id === userTokenId || user.roleId === "1" ) {
-    next();
+
+  jwt.verify(token, process.env.SECRET, (err, decoded) => {
+        if (err){
+            return res.status(403).send({ msg: 'Invalid token' + err });
+        }
+        const user = await db.User.findOne({ where: { id:decoded.id } });                
+        if(id === user.id || user.roleId === 1){
+            res.status(403).json({status:"User not found"});
+        }
+        next();
+    });
   } else {
     res.status(403).json({ msg: "Access denied" });
   }
