@@ -1,10 +1,15 @@
-const { memberRepositoryCreate } = require('../repositories/memberRepository');
-
-
+const { memberRepositoryCreate, memberRepositoryList, memberRepositoryDelete } = require('../repositories/memberRepository');
 
 const memberServiceCreate = (data) => {
     return memberRepositoryCreate(data);
 }
 
+const memberServiceList = () => {
+    return memberRepositoryList();
+}
 
-module.exports = { memberServiceCreate }
+const memberServiceDelete = (id) => {
+    return memberRepositoryDelete(id);
+}
+
+module.exports = { memberServiceCreate, memberServiceDelete, memberServiceList }
