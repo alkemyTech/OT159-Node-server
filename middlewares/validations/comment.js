@@ -12,4 +12,4 @@ const validateAddComment = [
     errorWrapperFunction
 ]
 
-module.exports = validateAddComment
+module.exports = { validateAddComment }

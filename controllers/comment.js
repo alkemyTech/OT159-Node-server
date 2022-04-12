@@ -8,8 +8,9 @@ const addComment = async function (req, res, next) {
         res.status(201).json('Comment saved');
         return createComment
     } catch (error) {
+        next (error);
         return res.status(500).json({
-            msg: 'something happened, please call the admin,'
+            msg: 'something happened'
         })
     }
 }
