@@ -26,7 +26,7 @@ module.exports = {
         validate: {
           notEmpty: true}
       },
-      /*categoryId: {
+      categoryId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Categories',
@@ -34,7 +34,7 @@ module.exports = {
         },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL'
-      },*/
+      },
       deletedAt: {
         type: Sequelize.DATE
       },
