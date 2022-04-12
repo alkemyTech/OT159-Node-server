@@ -16,9 +16,19 @@ const remove = async (id) => {
     },
   });
   return count;
+}
+const update = async (id, name, image, content) => {
+  const [updatedRows] = await models.Testimonial.update(
+    { name, image, content },
+    {
+      where: { id: id },
+    }
+  );
+  return updatedRows;
 };
 
 module.exports = {
   create,
   remove,
+  update
 };

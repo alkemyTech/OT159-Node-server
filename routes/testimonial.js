@@ -7,4 +7,5 @@ const {authorize} = require('../middlewares/checkRole')
 router.post("/", authorize(), validateTestimonial, testimonialController.create);
 router.delete("/:id", authorize(), testimonialController.remove);
 
+router.put("/:id", authorize(), validateTestimonial, testimonialController.update);
 module.exports = router;
