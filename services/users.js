@@ -1,5 +1,6 @@
 const usersRepository = require('../repositories/users')
 const sendWelcomeEmail = require('./welcomeEmail')
+const { passwordConverting } = require('../helpers/encryptionHelper')
 
 createNewUser = (userDatafields) => {
     return usersRepository.createNewUser(userDatafields)
@@ -27,4 +28,13 @@ sendEmail=async(email)=>{
 module.exports={
     sendEmail,
     createNewUser
+}
+module.exports.userLogin = async (email, password) => {
+    const userMail = await usersRepository.findMailUser(email, password)
+    if (userMail) {
+        const passwordConvert = await passwordConverting(password, userMail.dataValues.password);
+        if (passwordConvert) {
+            return userMail
+        }
+    }
 }
