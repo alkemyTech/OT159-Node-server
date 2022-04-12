@@ -9,6 +9,14 @@ create = async (name, image, content) => {
   return newTestimonial;
 };
 
+const remove = async (id) => {
+  const count = await models.Testimonial.destroy({
+    where: {
+      id: id,
+    },
+  });
+  return count;
+}
 const update = async (id, name, image, content) => {
   const [updatedRows] = await models.Testimonial.update(
     { name, image, content },
@@ -21,5 +29,6 @@ const update = async (id, name, image, content) => {
 
 module.exports = {
   create,
+  remove,
   update
 };
