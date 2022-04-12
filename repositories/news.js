@@ -24,6 +24,9 @@ const putNewsRepository=async(id,data)=>{
      return putNew
 }
 
+async function findNewsById(id) {
+        const novedades = await DbNews.New.findByPk(id);
+        return novedades;
+}
 
-
-module.exports = {addNews,putNewsRepository, remove}; 
+module.exports = {addNews,putNewsRepository, remove, findNewsById}; 
