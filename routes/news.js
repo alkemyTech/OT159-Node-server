@@ -4,7 +4,8 @@ const { controllerAddNews, controllerFindById, newsPutController, remove } = req
 const ValidateInputNews = require('../middlewares/validations');
 /* POST news. */
 const { haveRole } = require('../middlewares/validateRoles');
-const {validateIdNews} = require('../middlewares/validations');
+const {ValidateInputNews,validateIdNews} = require('../middlewares/validations/news');
+
 const { authorize } = require('../middlewares/checkRole');
 
 /* POST news. */
