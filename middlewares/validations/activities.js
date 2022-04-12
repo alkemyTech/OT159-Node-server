@@ -1,5 +1,4 @@
 const { check, validationResult } = require('express-validator')
-const db = require('../')
 
 const errorWrapperFunction = (req, res, next) => {
     const result = validationResult(req);
