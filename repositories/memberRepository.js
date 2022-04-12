@@ -12,16 +12,7 @@ const memberRepositoryList = async () => {
     return getMembers
 }
 const memberRepositoryDelete = async (id) => {
-    const member = await db.members.findByPk(id);
-    console.log(member);
-    if (!member) {
-        const error = new Error();
-        error.status = 404;
-        error.message = 'Member not found';
-        throw error;
-    }
-
-    return member.destroy();
+    return await db.members.destroy({where: { id: id }});
 }
 
 module.exports = {

@@ -8,8 +8,16 @@ const memberServiceList = () => {
     return memberRepositoryList();
 }
 
-const memberServiceDelete = (id) => {
-    return memberRepositoryDelete(id);
+const memberServiceDelete = async (id) => {
+    const deletedMember = await memberRepositoryDelete(id);
+    console.log(deletedMember);
+    if (deletedMember !== 1) {
+        const error = new Error();
+        error.status = 404;
+        error.message = 'Member not found';
+        throw error;
+    }
+    return deletedMember;
 }
 
 module.exports = { memberServiceCreate, memberServiceDelete, memberServiceList }
