@@ -1,7 +1,8 @@
 const router = require('express').Router();
+
 const { create, detail, getAllCategories } = require('../controllers/categoriesController'); 
 
-const { validateCreate } = require('../validators/categories');
+const { validateCreate } = require('../middlewares/validations/categories');
 const {authorize} = require('../middlewares/checkRole');
 
 //crear usuario
