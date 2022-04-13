@@ -4,9 +4,9 @@ module.exports.usersList = async() => {
     
 }
 
-module.exports.putUserById=async(id,data)=>{
-    const putUser = await db.User.update(
+module.exports.patchUserById=async(id,data)=>{
+    const patchUser = await db.User.update(
         data,{where:{id:id}},
     );
-    return putUser
+    return patchUser
 }
