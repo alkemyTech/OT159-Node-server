@@ -6,9 +6,9 @@ module.exports = {
    
   },
   pathUser: async(req = request, res = response)=>{
-    const { firstName, lastName, email, password, image }=req.body;
+    const { firstName, lastName, image }=req.body;
     const { id }=req.params;
-    const data={ firstName, lastName, email, password, image}
+    const data={ firstName, lastName, image}
   try {
     await userService.patchUserById(id,data)
     res.status(200).json({
