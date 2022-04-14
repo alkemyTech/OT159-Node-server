@@ -1,4 +1,5 @@
 const db = require('../models')
+const { pagination } = require('../helpers/pagination');
 
 const categoryRepositoryCreate = async (name, description, image) => {
     const category = await db.categories.create({ name, description, image })
@@ -6,7 +7,12 @@ const categoryRepositoryCreate = async (name, description, image) => {
 }
 
 const categoryRepositoryGetAll = async () => {
-    const categories = await db.Category.findAll({ attributes: ['name'] });
+    const { page  } = req.query;
+    let limit = 10;
+    let offset = (+page - 1) * limit;
+
+    const data = await db.Category.findAndCountAll({ attributes: ['name'], offset, limit });
+    const categories = await pagination(data, page, limit, 'category', offset);
     return categories;
 }
 
