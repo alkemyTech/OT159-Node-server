@@ -46,15 +46,15 @@ exports.getAllCategories = async (req, res) => {
 
 exports.updateCategory = async (req, res) => {
     const { id } = req.params;
-    const { body } = req.body;
+    const body = req.body;
     try {
         await categoryServiceUpdate(id, body);
         res.status(201).json({
             messsage: 'Category updated successfully'
         });
     } catch (error) {
-        return res.status(error.status).json({
-            error: error.message
+        return res.status(error.status || 500).json({
+            error: error.message || 'Something went wrong'
         })
     }
 }

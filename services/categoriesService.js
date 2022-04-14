@@ -20,7 +20,6 @@ const categoryServiceDetail = id => {
 
 const categoryServiceUpdate = async (id, body) => {
   const updatedCategory = await categoryRepositoryUpdate(id, body);
-  console.log(updatedCategory);
   if (updatedCategory[0] !== 1) {
     const error = new Error();
     error.status = 404;

@@ -9,6 +9,6 @@ const {authorize} = require('../middlewares/checkRole');
 router.post('/', validateCreate, create);
 router.get('/', validateCreate, getAllCategories);
 router.get('/:id', authorize(), detail);
-router.put('/:id', updateCategory);
+router.put('/:id', validateCreate, updateCategory);
 
 module.exports = router;
