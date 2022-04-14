@@ -1,7 +1,8 @@
 const {
   categoryRepositoryCreate,
   categoryRepositoryGetAll,
-  categoryRepositoryDetail
+  categoryRepositoryDetail,
+  categoryRepositoryUpdate
 } = require("../repositories/categoriesRepository");
 
 const categoryServiceCreate = (name,description, image) => {
@@ -17,8 +18,21 @@ const categoryServiceDetail = id => {
   return categoryRepositoryDetail(id)
 };
 
+const categoryServiceUpdate = async (id, body) => {
+  const updatedCategory = await categoryRepositoryUpdate(id, body);
+  console.log(updatedCategory);
+  if (updatedCategory[0] !== 1) {
+    const error = new Error();
+    error.status = 404;
+    error.message = 'Category not found';
+    throw error;
+  }
+  return updatedCategory;
+}
+
 module.exports = {
   categoryServiceCreate,
   categoryServiceDetail,
-  categoryServiceGetAll
+  categoryServiceGetAll,
+  categoryServiceUpdate
 };
