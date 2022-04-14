@@ -1,21 +1,23 @@
 const {createNewUser,sendEmail} = require('../services/users')
-const passwordEncryption = require('../helpers/encryptionHelper')
+const {passwordEncryption} = require('../helpers/encryptionHelper')
 const usersService = require('../services/users')
-
+const { createToken } = require('../middlewares/tokenHandler');
 
 const register = async(req, res, next) => {
     try {
         const { firstName, lastName, email, photo, roleId, password } = req.body
         const passwordEncrypted = await passwordEncryption(password)
-        const newUser = await createNewUser({firstName, lastName, email, photo, roleId, password: passwordEncrypted})
+        const newUser = await createNewUser({ firstName, lastName, email, photo, roleId, password: passwordEncrypted })
+        const userToken = createToken(newUser);
         const checkSendemail = await sendEmail(email);
         if(!checkSendemail){
             return res.status(201).json({
                 msg:'We can not send your welcome, do not worry. Your user was successfully',
-                newUser
+                newUser,
+                userToken
             })
         }
-        res.status(201).json({newUser})
+        res.status(201).json({newUser, userToken})
     } catch (error) {
         next(error)
     }
