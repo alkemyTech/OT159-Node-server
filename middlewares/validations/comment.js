@@ -2,10 +2,10 @@ const { check, validationResult } = require('express-validator')
 const errorWrapperFunction = require('.');
 
 const validateAddComment = [
-    check('userId', 'the id most be int').isNumeric(),
-    check('userId', 'can not be empty the id').notEmpty(),
-    check('newsId', 'the id most be int').isNumeric(),
-    check('newsId', 'can not be empty the id').notEmpty(),
+    check('user_id', 'the id most be int').isNumeric(),
+    check('user_id', 'can not be empty the id').notEmpty(),
+    check('news_id', 'the id most be int').isNumeric(),
+    check('news_id', 'can not be empty the id').notEmpty(),
     check('body')
         .notEmpty().withMessage('this field cannot be empty!').bail(),
 

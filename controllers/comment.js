@@ -2,8 +2,8 @@ const serviceComment = require('../services/comment');
 
 const addComment = async function (req, res, next) {
     try {
-        const { newsId, userId, body } = req.body;
-        const data = { newsId, userId, body }
+        const { news_id, user_id, body } = req.body;
+        const data = { news_id, user_id, body }
         const createComment = await serviceComment.save(data);
         res.status(201).json('Comment saved');
         return createComment
