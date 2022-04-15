@@ -5,4 +5,5 @@ const { detail } = require('../controllers/slides');
 
 router.get('/:id', detail);
 
+
 module.exports = router;

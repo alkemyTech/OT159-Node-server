@@ -43,6 +43,7 @@ app.use('/activities', activitiesRouter)
 app.use('/users', usersRouter);
 app.use('/members', membersRouter)
 app.use('/slides', slidesRouter);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

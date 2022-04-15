@@ -33,6 +33,7 @@ const detail = async (req, res) => {
     }
 }
 
+
   module.exports = { 
       detail
  };

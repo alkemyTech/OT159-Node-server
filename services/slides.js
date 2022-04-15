@@ -6,6 +6,7 @@ const detail =  async (id) => {
     return slide;
 }
 
+
 module.exports = { 
     detail
  }
