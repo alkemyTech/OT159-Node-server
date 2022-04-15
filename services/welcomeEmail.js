@@ -23,5 +23,16 @@ const sendWelcomeEmail = async (api_key, to, from, template_id) => {
         
     }
 }
-
-module.exports = sendWelcomeEmail;
+const newContactEmail = async (api_key, to, from, template_id) => {
+    sgMail.setApiKey(api_key);
+    const mail ={
+        to: to,
+        from: from,
+        templateId: templateId
+    }
+    const sendedEmail = await sgMail.send(mail)
+    if(sendedEmail){
+        return sendedEmail
+    }
+}
+module.exports = sendWelcomeEmail, newContactEmail;
