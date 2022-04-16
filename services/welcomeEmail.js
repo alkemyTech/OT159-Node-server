@@ -28,7 +28,7 @@ const newContactEmail = async (api_key, to, from, template_id) => {
     const mail ={
         to: to,
         from: from,
-        templateId: templateId
+        templateId: template_id
     }
     const sendedEmail = await sgMail.send(mail)
     if(sendedEmail){
