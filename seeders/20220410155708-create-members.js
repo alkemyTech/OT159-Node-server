@@ -11,7 +11,6 @@ module.exports = {
       description: 'Member1 Description',
       createdAt: new Date,
       updatedAt: new Date,
-      deletedAt: new Date,
     },
     {
       name: 'Member2',
@@ -22,7 +21,6 @@ module.exports = {
       description: 'Member2 Description',
       createdAt: new Date,
       updatedAt: new Date,
-      deletedAt: new Date,
     },
     {
       name: 'Member3',
