@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
         allowNull: false,
       },
-      post_id: {
+      news_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },

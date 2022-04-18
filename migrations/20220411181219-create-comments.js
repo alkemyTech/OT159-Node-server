@@ -16,7 +16,7 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false,
       },
-      post_id: {
+      news_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },

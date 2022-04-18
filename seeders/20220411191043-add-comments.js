@@ -7,21 +7,21 @@ module.exports = {
       {
         user_id: 1,
         body: 'A great comment from the user',
-        post_id: 1,
+        news_id: 1,
         createdAt: new Date,
         updatedAt: new Date
       },
       {
         user_id: 1,
         body: 'You might think a single comment is enough',
-        post_id: 2,
+        news_id: 2,
         createdAt: new Date,
         updatedAt: new Date
       },
       {
         user_id: 2,
         body: 'Well, think again',
-        post_id: 1,
+        news_id: 1,
         createdAt: new Date,
         updatedAt: new Date
       }], {});
