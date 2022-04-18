@@ -32,8 +32,11 @@ exports.detail = async (req, res) => {
 }
 
 exports.getAllCategories = async (req, res) => {
+
+    const { page } = req.query;
+
     try {
-        const categories = await categoryServiceGetAll();
+        const categories = await categoryServiceGetAll(page);
         res.status(200).json({
             categories
         });

@@ -8,8 +8,8 @@ const categoryServiceCreate = (name,description, image) => {
   return categoryRepositoryCreate(name, description, image);
 };
 
-const categoryServiceGetAll = async() => {
-  const categories = await categoryRepositoryGetAll();
+const categoryServiceGetAll = async(page) => {
+  const categories = await categoryRepositoryGetAll(page);
   return categories;
 }
 

@@ -6,13 +6,11 @@ const categoryRepositoryCreate = async (name, description, image) => {
     return category
 }
 
-const categoryRepositoryGetAll = async () => {
-    const { page  } = req.query;
-    let limit = 10;
-    let offset = (+page - 1) * limit;
+const categoryRepositoryGetAll = async (page = 0, limit = 1) => {
+    let offset = page * limit;
 
     const data = await db.Category.findAndCountAll({ attributes: ['name'], offset, limit });
-    const categories = await pagination(data, page, limit, 'category', offset);
+    const categories = await pagination(data, page, limit, 'category');
     return categories;
 }
 

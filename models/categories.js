@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Category',
     timestamps: true,
     paranoid: true,
-    deletedAt: 'destroyCategory'
+    // deletedAt: 'destroyCategory'
   });
   return Category;
 };
