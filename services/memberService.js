@@ -4,8 +4,10 @@ const memberServiceCreate = (data) => {
     return memberRepositoryCreate(data);
 }
 
-const memberServiceList = () => {
-    return memberRepositoryList();
+const memberServiceList =async (page) => {
+
+    const members = memberRepositoryList(page);
+    return members;
 }
 
 const memberServiceDelete = async (id) => {

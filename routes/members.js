@@ -9,6 +9,8 @@ router.post('/', [validateMember], postMembers);
 
 router.delete('/:id', deleteMember);
 
-router.get('/', isAdminRole, listMembers.list)
+router.get('/', 
+// isAdminRole, 
+listMembers)
 
 module.exports = router;

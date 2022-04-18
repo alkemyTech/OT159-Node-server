@@ -8,7 +8,7 @@ const controllerAddNews = async function (req, res, next) {
             name,
             content,
             image,
-            categoryId
+            // categoryId
         }
         const newsCreated = await serviceNews.save(data);
         res.status(201).json('The news were successfully saved ')

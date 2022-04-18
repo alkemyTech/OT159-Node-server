@@ -49,24 +49,18 @@ const deleteMember = async (req, res) => {
     }
 }
 
-const listMembers = {
+const listMembers = async (req, res)=> {
 
-    list: async (req, res)  => {
-
+    
+        const { page } = req.query;
         try {
 
-            const allMembers = await memberServiceList();
+           const allMembers= await memberServiceList(page);
 
-            let response = {
-                meta: {
-                    status : 200,
-                    total: allMembers.length,
-                    url: '/members'
-                },
-                data: allMembers  
-            }
             
-            res.json(response);
+         res.status(200).json({
+            allMembers
+         })
 
         } catch (error) {
                 
@@ -75,8 +69,8 @@ const listMembers = {
             })
         }
 
-    }
 }
+
 
 module.exports = {
     postMembers, 
