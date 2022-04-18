@@ -1,4 +1,4 @@
-const {contactsService} = require('../services/contactsService');
+const { contactsService } = require('../services/contactsService');
 
 exports.getAllContacts = async (req, res) => {
     try {
