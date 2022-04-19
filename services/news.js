@@ -1,5 +1,4 @@
-const { addNews, findNewsById, putNewsRepository } = require('../repositories/news');
-const newsRepository = require('../repositories/news');
+const { addNews, findNewsById, putNewsRepository,getAllNewsRepository } = require('../repositories/news');
 
 const save = async (news) => {
     return await addNews(news);
@@ -9,7 +8,10 @@ const FindById = async(id) => {
     return findNewsById(id)
 };
 
-
+const getAllNews=async(page)=>{
+const news = await getAllNewsRepository(page);
+return news
+}
 const putNewService=async(id,data)=>{
     return await putNewsRepository(id,data)
 }
@@ -20,4 +22,4 @@ const remove = async (id) => {
   return deletedCount;
 };
 
-module.exports = { save, putNewService, remove, FindById };
+module.exports = { save, putNewService, remove, FindById,getAllNews };

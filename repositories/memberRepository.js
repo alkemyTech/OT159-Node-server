@@ -13,7 +13,6 @@ const memberRepositoryList = async (page = 0, limit = 1) => {
     let offset = page * limit;
     const data = await db.members.findAndCountAll({ offset, limit });
     const members = await pagination(data, page, limit, 'members');
-console.log(members);
     return members;
 }
 

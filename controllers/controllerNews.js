@@ -1,5 +1,6 @@
 const serviceNews = require('../services/news');
 const {request,response}=require('express');
+const { type, get } = require('express/lib/response');
 
 const controllerAddNews = async function (req, res, next) {
   try {
@@ -8,7 +9,7 @@ const controllerAddNews = async function (req, res, next) {
             name,
             content,
             image,
-            // categoryId
+            categoryId
         }
         const newsCreated = await serviceNews.save(data);
         res.status(201).json('The news were successfully saved ')
@@ -19,6 +20,20 @@ const controllerAddNews = async function (req, res, next) {
   }
 };
 
+const getAllNews=async(req,res)=>{
+  const {page}=req.query;
+
+  const getAllNews = await serviceNews.getAllNews(page);
+  try {
+   return res.status(200).json({
+     getAllNews
+    })
+  } catch (error) {
+    return res.status(500).json({
+      msg:'Internal Server Error',
+  })
+  }
+}
 const newsPutController=async(req=request,res=response)=>{
     const { id }=req.params
     const { name, content, image /*, categoryId */ } = req.body
@@ -71,4 +86,4 @@ const controllerFindById = async function (req, res, next) {
 }
 
 
-module.exports = { controllerAddNews, newsPutController, remove, controllerFindById };
+module.exports = { controllerAddNews, newsPutController, remove, controllerFindById,getAllNews };

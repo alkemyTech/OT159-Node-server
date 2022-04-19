@@ -1,3 +1,4 @@
+const { pagination } = require('../helpers/pagination');
 const DbNews = require('../models');
 
 async function addNews(news) {
@@ -16,6 +17,12 @@ async function remove(id) {
     throw { name: error.name, code: 500 };
   }
 }
+const getAllNewsRepository=async(page = 0, limit = 1,)=> {
+  let offset = page * limit;
+    const data = await DbNews.New.findAndCountAll({ offset, limit });
+    const news = await pagination(data, page, limit, 'news');
+    return news; 
+}
 const putNewsRepository=async(id,data)=>{
 
 
@@ -29,4 +36,4 @@ async function findNewsById(id) {
         return novedades;
 }
 
-module.exports = {addNews,putNewsRepository, remove, findNewsById}; 
+module.exports = {addNews,putNewsRepository, remove, findNewsById,getAllNewsRepository}; 
