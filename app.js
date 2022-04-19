@@ -42,19 +42,8 @@ app.use('/organization', organizationRouter);
 app.use('/auth', authRouter)
 app.use('/testimonials', testimonialsRouter);
 app.use('/activities', activitiesRouter)
-<<<<<<< HEAD
-=======
-app.use('/contacts', contactsRouter)
->>>>>>> OT159-56-endpoint-para-almacenar-contactos
 app.use('/comments', commentRouter)
 app.use('/contacts', contactsRouter);
-
-<<<<<<< HEAD
-app.use('/contacts', contactsRouter)
-=======
-
->>>>>>> OT159-56-endpoint-para-almacenar-contactos
-app.use('/users', usersRouter);
 app.use('/members', membersRouter)
 app.use('/slides', slidesRouter);
 
