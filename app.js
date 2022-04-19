@@ -16,7 +16,7 @@ const organizationRouter = require('./routes/organizationRoutes');
 const authRouter = require('./routes/auth');
 const membersRouter = require('./routes/members');
 const activitiesRouter = require('./routes/activities')
-const commentRouter = require('./routes/comment')
+const commentRouter = require('./routes/comments')
 const slidesRouter = require('./routes/slides')
 const contactsRouter = require('./routes/contacts')
 

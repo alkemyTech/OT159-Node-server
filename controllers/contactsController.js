@@ -10,7 +10,7 @@ const create = async(req, res, next) => {
     }
 }
 
-exports.getAllContacts = async (req, res) => {
+const getAllContacts = async (req, res) => {
     try {
         const contacts = await contactsService.getAllContacts();
         res.status(200).json({
@@ -24,5 +24,6 @@ exports.getAllContacts = async (req, res) => {
 }
 
 module.exports = {
+    getAllContacts,
     create
 }
