@@ -5,6 +5,14 @@ const getAll = () => {
     return slides
 }
 
-module.exports = {
-    getAll
+const detail =  async (id) => {
+    
+    const slide = await slidesRepository.detail(id)
+    return slide;
 }
+
+
+module.exports = { 
+    getAll,
+    detail
+ }

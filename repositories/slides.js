@@ -5,6 +5,14 @@ const getAll = async() => {
     return slides
 }
 
-module.exports = {
-    getAll
+const detail = async (id) => {
+
+    const slide = await db.Slide.findByPk(id)
+    return slide;
+}
+
+
+module.exports = { 
+    getAll,
+    detail
 }
