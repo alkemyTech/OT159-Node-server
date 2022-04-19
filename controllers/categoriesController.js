@@ -1,4 +1,4 @@
-const { categoryServiceCreate, categoryServiceDetail, categoryServiceGetAll, categoryServiceDelete } = require('../services/categoriesService')
+const { categoryServiceCreate, categoryServiceDetail, categoryServiceGetAll, categoryServiceDelete, categoryServiceUpdate } = require('../services/categoriesService')
 
 
 exports.create = async (req, res) => {
@@ -53,5 +53,20 @@ exports.remove = async (req,res) => {
     }catch(err) {
         console.log(err)
         res.status(err.code || 500).send(err.name);
+    }
+}
+        
+exports.updateCategory = async (req, res) => {
+    const { id } = req.params;
+    const body = req.body;
+    try {
+        await categoryServiceUpdate(id, body);
+        res.status(201).json({
+            messsage: 'Category updated successfully'
+        });
+    } catch (error) {
+        return res.status(error.status || 500).json({
+            error: error.message || 'Something went wrong'
+        })
     }
 }

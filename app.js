@@ -16,11 +16,7 @@ const organizationRouter = require('./routes/organizationRoutes');
 const authRouter = require('./routes/auth');
 const membersRouter = require('./routes/members');
 const activitiesRouter = require('./routes/activities')
-<<<<<<< HEAD
-const commentsRouter = require('../routes/comments');
-=======
 const commentRouter = require('./routes/comment')
->>>>>>> ot159-81
 
 const app = express();
 app.use(cors())

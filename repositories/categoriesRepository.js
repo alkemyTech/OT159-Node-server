@@ -15,7 +15,20 @@ const categoryRepositoryDetail = async (id) => {
       where: { id },
     });
     return category;
-  };
+};
+  
+const categoryRepositoryUpdate = async (id, body) => {
+  const updatedCategory = await db.Category.update({
+    name: body.name,
+    description: body.description,
+    image: body.image
+  }, {
+    where: {
+      id: id
+    }
+  });
+  return updatedCategory;
+}
 
 const categoryRepositoryDelete = async (id) => {
   const deletedCount = await db.Category.destroy({ where: {id: id} });
@@ -26,5 +39,6 @@ module.exports = {
     categoryRepositoryCreate,
     categoryRepositoryDetail,
     categoryRepositoryGetAll,
-    categoryRepositoryDelete
+    categoryRepositoryDelete,
+    categoryRepositoryUpdate
 }
