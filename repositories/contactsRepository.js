@@ -5,6 +5,11 @@ const create = async (contactDataField) => {
     return newContact;
   };
 
+const getAllContacts = async () => {
+    return await db.Contact.findAll();
+}
+
 module.exports = {
-    create
+    create,
+    getAllContacts
 }
