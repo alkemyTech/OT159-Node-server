@@ -1,4 +1,4 @@
-const serviceComment = require('../services/comment');
+const serviceComment = require('../services/comments');
 
 const updateaComment = async function (req, res, next) {
     const data = req.body;
