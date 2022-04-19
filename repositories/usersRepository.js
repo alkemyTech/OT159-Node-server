@@ -7,3 +7,10 @@ module.exports.usersList = async() => {
     return getUsers
     
 }
+
+
+module.exports.deleteUser = async(id) => {
+   const deletedUser=await db.User.destroy({where: { id: id }});
+   return deletedUser
+};
+

@@ -1,3 +1,4 @@
+const {response,request}=require('express')
 const userService = require("../services/usersService");
 
 
@@ -26,6 +27,21 @@ const userService = require("../services/usersService");
     }  
   }
 
+  const deleteUser = async(req=request,res=response)=>{
+    const { id}=req.params;
+    try {
+      await userService.deleteUser(id);
+      return res.status(200).json({
+        msg:'the user deleted successfully'
+      })
+    } catch (error) {
+      return res.status(error.status).json({
+        msg: error.message
+      })
+    }
+  }
+
   module.exports = {
+    deleteUser,
     usersList
   }
