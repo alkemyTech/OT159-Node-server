@@ -17,6 +17,8 @@ const authRouter = require('./routes/auth');
 const membersRouter = require('./routes/members');
 const activitiesRouter = require('./routes/activities')
 const slidesRouter = require('./routes/slides')
+const commentRouter = require('./routes/comment')
+
 
 const app = express();
 app.use(cors())
@@ -39,6 +41,7 @@ app.use('/organization', organizationRouter);
 app.use('/auth', authRouter)
 app.use('/testimonials', testimonialsRouter);
 app.use('/activities', activitiesRouter)
+app.use('/comments', commentRouter)
 
 app.use('/users', usersRouter);
 app.use('/members', membersRouter)

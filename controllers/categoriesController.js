@@ -1,4 +1,4 @@
-const { categoryServiceCreate, categoryServiceDetail, categoryServiceGetAll } = require('../services/categoriesService')
+const { categoryServiceCreate, categoryServiceDetail, categoryServiceGetAll, categoryServiceDelete, categoryServiceUpdate } = require('../services/categoriesService')
 
 
 exports.create = async (req, res) => {
@@ -41,5 +41,32 @@ exports.getAllCategories = async (req, res) => {
         return res.status(500).send({
             error: "Something went wrong"
         });
+    }
+}
+
+exports.remove = async (req,res) => {
+    const { id } = req.params;
+    console.log('acva')
+    try {
+        const deletedCount = await categoryServiceDelete(id);
+        res.status(200).send(`Deleted category with id ${id}`);
+    }catch(err) {
+        console.log(err)
+        res.status(err.code || 500).send(err.name);
+    }
+}
+        
+exports.updateCategory = async (req, res) => {
+    const { id } = req.params;
+    const body = req.body;
+    try {
+        await categoryServiceUpdate(id, body);
+        res.status(201).json({
+            messsage: 'Category updated successfully'
+        });
+    } catch (error) {
+        return res.status(error.status || 500).json({
+            error: error.message || 'Something went wrong'
+        })
     }
 }
