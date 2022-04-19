@@ -15,7 +15,14 @@ async function addComment(comment) {
     return newComment;
 }
 
+const updateComment = async (id, data) => {
+    const putComment = await db.Comment.update(data, { where: { id: id } });
+    return putComment
+}
+
 module.exports = {
     addComment,
     getAllComments,
+    updateComment
 }
+

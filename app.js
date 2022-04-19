@@ -42,8 +42,8 @@ app.use('/organization', organizationRouter);
 app.use('/auth', authRouter)
 app.use('/testimonials', testimonialsRouter);
 app.use('/activities', activitiesRouter)
-app.use('/comments', commentRouter)
 app.use('/contacts', contactsRouter);
+app.use('/comments', commentRouter)
 app.use('/members', membersRouter)
 app.use('/slides', slidesRouter);
 

@@ -1,4 +1,4 @@
-const { commentsRepository, addComment } = require('../repositories/comments');
+const { commentsRepository, addComment, updateComment } = require('../repositories/comments');
 
 const getAllComments = async () => {
     const comments = await commentsRepository.getAllComments();
@@ -10,7 +10,15 @@ const save = async (comment) => {
     return await addComment(comment);
 }
 
+const update = async (id, data) => {
+    return await updateComment(id, data)
+}
+
 module.exports = {
     save,
     getAllComments,
+    update
 }
+
+
+

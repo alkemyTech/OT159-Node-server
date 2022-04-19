@@ -10,15 +10,14 @@ const isOwnership = async (req, res, next) => {
         if (err){
             return res.status(403).send({ msg: 'Invalid token' + err });
         }
-        const user = await db.User.findOne({ where: { id:decoded.id } });                
+        const user = db.User.findOne({ where: { id:decoded.id } });                
         if(id === user.id || user.roleId === 1){
             res.status(403).json({status:"User not found"});
         }
         next();
     });
-  } else {
+
     res.status(403).json({ msg: "Access denied" });
-  }
-};
+  };
 
 module.exports = isOwnership;
