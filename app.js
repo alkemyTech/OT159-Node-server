@@ -18,6 +18,7 @@ const membersRouter = require('./routes/members');
 const activitiesRouter = require('./routes/activities')
 const commentRouter = require('./routes/comment')
 const slidesRouter = require('./routes/slides')
+const contactsRouter = require('./routes/contacts')
 
 const app = express();
 app.use(cors())
@@ -42,6 +43,7 @@ app.use('/testimonials', testimonialsRouter);
 app.use('/activities', activitiesRouter)
 app.use('/comments', commentRouter)
 
+app.use('/contacts', contactsRouter)
 app.use('/users', usersRouter);
 app.use('/members', membersRouter)
 app.use('/slides', slidesRouter)
