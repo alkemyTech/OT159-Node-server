@@ -23,8 +23,8 @@ const controllerAddNews = async function (req, res, next) {
 const getAllNews=async(req,res)=>{
   const {page}=req.query;
 
-  const getAllNews = await serviceNews.getAllNews(page);
   try {
+    const getAllNews = await serviceNews.getAllNews(page);
    return res.status(200).json({
      getAllNews
     })
