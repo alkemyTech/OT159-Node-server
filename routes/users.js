@@ -7,6 +7,6 @@ const validateUser = require('../middlewares/validations/user');
 /* GET users listing. */
 router.get('/users', usersList);
 
-router.patch('/:id', validateUser,editingUser);
+router.patch('/:id', validateUser , editingUser);
 
 module.exports = router;

@@ -6,7 +6,6 @@ module.exports.usersList = async() => {
 
 module.exports.patchUserById = async(id,data)=>{
     const checkPathUser = await userRepo.patchUserById(id,data);
-    
     if (checkPathUser[0]===0) throw new Error
   return checkPathUser;
 }

@@ -6,7 +6,6 @@ module.exports = {
    
   },
   editingUser: async(req = request, res = response)=>{
-
     const { firstName, lastName, email, password, image }=req.body;
     const { id }=req.params;
     const data={ firstName, lastName, email, password, image}
@@ -17,8 +16,8 @@ module.exports = {
       })} 
 
     catch (error) {
-    res.status(404).json({
-      msg:`something was wrong, please check it. `
+    res.status(500).json({
+      msg: `something was wrong, please check it.`
     })}
 
   }
