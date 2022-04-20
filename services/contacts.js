@@ -1,7 +1,7 @@
-const emailNewContact = require('./welcomeEmail')
+const sendNewEmail = require('./welcomeEmail')
 
 const sendMailNewContact = async (email) => {
-    const sended = await emailNewContact(
+    const sended = await sendNewEmail(
         process.env.API_KEY,
         email,
        // from = 'luisinaescobar5@gmail.com',

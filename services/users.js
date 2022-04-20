@@ -1,5 +1,5 @@
 const usersRepository = require('../repositories/users')
-const sendWelcomeEmail = require('./welcomeEmail')
+const sendNewEmail = require('./welcomeEmail')
 const { passwordConverting } = require('../helpers/encryptionHelper')
 
 createNewUser = (userDatafields) => {
@@ -10,7 +10,7 @@ createNewUser = (userDatafields) => {
 
 
 sendEmail=async(email)=>{
-    const {sended} = await sendWelcomeEmail(
+    const {sended} = await sendNewEmail(
         process.env.API_KEY,
         email,
         // from='estebanferreccio@gmail.com',

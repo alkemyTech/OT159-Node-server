@@ -1,6 +1,6 @@
 const sgMail = require('@sendgrid/mail');
 
-const sendWelcomeEmail = async (api_key, to, from, template_id) => {
+const sendNewEmail = async (api_key, to, from, template_id) => {
 
     sgMail.setApiKey(api_key);
 
@@ -23,16 +23,5 @@ const sendWelcomeEmail = async (api_key, to, from, template_id) => {
         
     }
 }
-const newContactEmail = async (api_key, to, from, template_id) => {
-    sgMail.setApiKey(api_key);
-    const mail ={
-        to: to,
-        from: from,
-        templateId: template_id
-    }
-    const sendedEmail = await sgMail.send(mail)
-    if(sendedEmail){
-        return sendedEmail
-    }
-}
-module.exports = sendWelcomeEmail, newContactEmail;
+
+module.exports = sendNewEmail;
