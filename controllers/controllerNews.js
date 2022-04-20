@@ -69,6 +69,19 @@ const controllerFindById = async function (req, res, next) {
         next(error)
     }
 }
+const getAllNews=async(req,res)=>{
 
+  const {page}=req.query;
+  const news = await serviceNews.newServiceGetAll(page);
+  try {
+    res.status(200).json({
+      news
+    });
+  } catch (error) {
+    return res.status(500).json({
+      msg:'something was wrong, please check it'
+    })
+  }
+}
 
-module.exports = { controllerAddNews, newsPutController, remove, controllerFindById };
+module.exports = { controllerAddNews, newsPutController, remove, controllerFindById,getAllNews };
