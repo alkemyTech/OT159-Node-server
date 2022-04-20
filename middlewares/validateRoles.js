@@ -1,13 +1,13 @@
 
  const isAdminRole = (req, res, next) =>{
-    if(!req.session.user){
+    if(!req.user){
         return res.status(500).json({
             msg: "You need to login first"
         });
     }
 
-    const roleId = req.session.user.roleId;
-    const name = req.session.user.name;
+    const roleId = req.user.roleId;
+    const name = req.user.name;
 
     if(roleId !== 1){
         return res.status(401).json({
