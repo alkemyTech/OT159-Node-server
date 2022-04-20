@@ -13,7 +13,7 @@ const getAllRepository = async (page = 0, limit = 1) => {
   let offset = page * limit;
 
   const data = await DbNews.New.findAndCountAll({ attributes: ['name'], offset, limit });
-  const categories = await pagination(data, page, limit, 'members');
+  const categories = await pagination(data, page, limit, 'news');
   return categories;
 }
 
