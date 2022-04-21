@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+const { usersList } = require('../controllers/usersController')
 const { usersList,editingUser } = require('../controllers/usersController');
 const validateUser = require('../middlewares/validations/user');
 
