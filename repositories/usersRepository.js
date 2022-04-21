@@ -14,3 +14,11 @@ module.exports.deleteUser = async(id) => {
    return deletedUser
 };
 
+
+module.exports.patchUserById=async(id,data)=>{
+    
+    const patchUser = await db.User.update(
+        data,{where:{id:id}},
+    );
+    return patchUser
+}
