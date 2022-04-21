@@ -52,7 +52,7 @@ swaggerSpec = {
   definition: {
       openapi: "3.0.0",
       info: {
-          title: "Node Documentation API",
+          title: "Somos Más API",
           version: "1.0.0"
       },
       servers: [
