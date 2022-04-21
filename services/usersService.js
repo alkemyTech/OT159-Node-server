@@ -17,3 +17,8 @@ module.exports.deleteUser=async(id)=>{
         return deleteUser;
    
 }
+
+module.exports.patchUserById = async(id,data)=>{
+    const checkPathUser = await userRepo.patchUserById(id,data);
+  return checkPathUser;
+}
