@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-const { controllerAddNews, newsPutController, remove } = require('../controllers/controllerNews');
+const { controllerAddNews, controllerFindById, newsPutController, remove } = require('../controllers/controllerNews');
 /* POST news. */
 const { haveRole } = require('../middlewares/validateRoles');
-const {ValidateInputNews,validateIdNews} = require('../middlewares/validations');
+const {ValidateInputNews,validateIdNews} = require('../middlewares/validations/news');
 
 const { authorize } = require('../middlewares/checkRole');
 
