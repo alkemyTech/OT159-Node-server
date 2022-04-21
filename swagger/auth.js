@@ -62,12 +62,23 @@
  *                    "lastName": "novak1234"
  *                    "email" : "test1234@test.com"
  *                    "password" : "Lucas1234"
- *                registro sin éxito:
+ *                registro sin éxito (Usuario ya existe):
  *                  value:    
  *                    "firstName": "lucas2"
  *                    "lastName": "novak"
  *                    "email" : "test1@test.com"
  *                    "password" : "Lucas123"
+ *                registro sin éxito (Password no cumple requerimientos):
+ *                  value:    
+ *                    "firstName": "lucas2"
+ *                    "lastName": "novak"
+ *                    "email" : "test1@test.com"
+ *                    "password" : "lucas"
+ *                registro sin éxito (Se omite un campo):
+ *                  value:    
+ *                    "lastName": "novak"
+ *                    "email" : "test1@test.com"
+ *                    "password" : "Lucas1234"  
  *       responses:
  *         '201':
  *           description: OK
@@ -94,9 +105,12 @@
  *                  value:    
  *                    "email" : "test1234@test.com"
  *                    "password" : "Lucas1234"
- *                login sin éxito:
+ *                login sin éxito (Datos incorrectos):
  *                  value:    
  *                    "email" : "testsdfs1@test.com"
+ *                    "password" : "Lucas123" 
+ *                login sin éxito (Se omite un campo):
+ *                  value:    
  *                    "password" : "Lucas123" 
  *       responses:
  *         200:
