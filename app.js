@@ -19,7 +19,8 @@ const activitiesRouter = require('./routes/activities')
 const commentRouter = require('./routes/comments')
 const slidesRouter = require('./routes/slides')
 const contactsRouter = require('./routes/contacts')
-
+const swaggerUI = require('swagger-ui-express');
+const swaggerJsDoc = require('swagger-jsdoc')
 
 const app = express();
 app.use(cors())
@@ -34,7 +35,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
-
 app.use('/users', usersRouter); 
 app.use('/category',categoryRouter); 
 app.use('/news', newsRouter);
@@ -46,6 +46,27 @@ app.use('/contacts', contactsRouter);
 app.use('/comments', commentRouter)
 app.use('/members', membersRouter)
 app.use('/slides', slidesRouter);
+
+//Swagger
+swaggerSpec = {
+  definition: {
+      openapi: "3.0.0",
+      info: {
+          title: "Node Documentation API",
+          version: "1.0.0"
+      },
+      servers: [
+          {
+              url: "http://localhost:3000"
+          }
+      ]
+  },
+  apis: [
+      `${path.join(__dirname, '/swagger/*.js')}`
+  ],
+}
+//here configure swagger 
+app.use("/api-doc", swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(swaggerSpec)))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
