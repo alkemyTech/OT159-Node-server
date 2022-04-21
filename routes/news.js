@@ -10,6 +10,7 @@ const { authorize } = require('../middlewares/checkRole');
 /* POST news. */
 router.post('/', ValidateInputNews, controllerAddNews);
 router.delete('/:id', authorize(), remove);
+router.get('/:id', controllerFindById );
 router.get('/', getAllNews );
 
 
