@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   Slide.init({
     imageUrl: DataTypes.STRING,
     text: DataTypes.STRING,
-    order: DataTypes.INTEGER
+    order: DataTypes.INTEGER,
+    organizationId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Slide',
