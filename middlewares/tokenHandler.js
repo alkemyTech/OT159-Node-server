@@ -6,7 +6,7 @@ const jwtExpirySeconds = 600;
 
 //Used to create and send a token to the user after a successfull LogIn
 const createToken = (user) => {
-  const token = jwt.sign({ user }, jwtKey, {
+  const token = jwt.sign({ user }, process.env.SECRET, {
     algorithm: 'HS256',
     expiresIn: jwtExpirySeconds,
   });
@@ -17,7 +17,7 @@ const createToken = (user) => {
 const verifyToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
   if (!authHeader) res.status(401).send('Unauthorized');
-  jwt.verify(authHeader, jwtKey, function (error, decoded) {
+  jwt.verify(authHeader, process.env.SECRET, function (error, decoded) {
     if (error) return res.status(500).send({ auth: false, message: error });
     req.user = decoded;
     next();
