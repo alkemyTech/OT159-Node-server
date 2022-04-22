@@ -25,9 +25,16 @@ sendEmail=async(email)=>{
 
 }
 
+const existEmailUser = async (email) => {
+    const user = await usersRepository.findMailUser(email);
+    return user;
+  };
+
+
 module.exports={
     sendEmail,
-    createNewUser
+    createNewUser,
+    existEmailUser
 }
 module.exports.userLogin = async (email, password) => {
     const userMail = await usersRepository.findMailUser(email, password)
