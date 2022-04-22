@@ -47,7 +47,8 @@
  * /auth/register:
  *   post:
  *       tags: ["Register User"]
- *       description: register to application
+ *       summary: Sign Up User
+ *       description: Register
  *       requestBody:
  *          required: true
  *          content:
@@ -58,32 +59,36 @@
  *              examples:
  *                registro exitoso:
  *                  value:    
- *                    "firstName": "lucas1234"
- *                    "lastName": "novak1234"
- *                    "email" : "test1234@test.com"
- *                    "password" : "Lucas1234"
+ *                    "firstName": "lucas123456"
+ *                    "lastName": "novak123456"
+ *                    "email" : "test123456@test.com"
+ *                    "password" : "Test123456"
+ *                    "roleId": "1"
  *                registro sin éxito (Usuario ya existe):
  *                  value:    
  *                    "firstName": "lucas2"
  *                    "lastName": "novak"
- *                    "email" : "test1@test.com"
- *                    "password" : "Lucas123"
+ *                    "email" : "test123456@test.com"
+ *                    "password" : "Test123456"
+ *                    "roleId": "2"
  *                registro sin éxito (Password no cumple requerimientos):
  *                  value:    
  *                    "firstName": "lucas2"
  *                    "lastName": "novak"
- *                    "email" : "test1@test.com"
- *                    "password" : "lucas"
+ *                    "email" : "test123456@test.com"
+ *                    "password" : "test123456"
  *                registro sin éxito (Se omite un campo):
  *                  value:    
  *                    "lastName": "novak"
- *                    "email" : "test1@test.com"
- *                    "password" : "Lucas1234"  
+ *                    "email" : "test123456@test.com"
+ *                    "password" : "Test123456"  
  *       responses:
  *         '201':
- *           description: OK
+ *           description: Created
  *         '400':
  *           description: Bad Request
+ *         '422':
+ *           description: Unprocessable Entity
 
  */
 
@@ -92,7 +97,8 @@
  * /auth/login:
  *   post:
  *       tags: ["Login User"]
- *       description: register to application
+ *       summary: Sign in User
+ *       description: Login
  *       requestBody:
  *          required: true
  *          content:
@@ -103,8 +109,8 @@
   *              examples:
  *                login exitoso:
  *                  value:    
- *                    "email" : "test1234@test.com"
- *                    "password" : "Lucas1234"
+ *                    "email" : "test123456@test.com"
+ *                    "password" : "Test123456"
  *                login sin éxito (Datos incorrectos):
  *                  value:    
  *                    "email" : "testsdfs1@test.com"
@@ -117,5 +123,9 @@
  *          description: OK
  *         400:
  *          description: Bad Request
+ *         404:
+ *          description: Not Found
+ *         '422':
+ *          description: Unprocessable Entity 
  */ 
 
