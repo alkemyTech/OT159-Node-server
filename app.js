@@ -36,7 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 
 app.use('/users', usersRouter); 
-app.use('/category',categoryRouter); 
+app.use('/categories',categoryRouter); 
 app.use('/news', newsRouter);
 app.use('/organization', organizationRouter);
 app.use('/auth', authRouter)
