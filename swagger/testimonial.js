@@ -100,3 +100,32 @@
  *         '500':
  *           description: the testimonial has not been updated
  */
+
+/**
+ * @swagger
+ * /testimonials/{id}:
+ *   delete:
+ *       summary: remove tesmonials
+ *       tags: [Testimonial]
+ *       parameters:
+ *          - in: path
+ *            name: id
+ *            schema:
+ *              type: string
+ *            required: true
+ *            description: the testimonial id
+ *       requestBody:
+ *          required: true
+ *          content:
+ *            application/json:
+ *              schema:
+ *                 type: object
+ *                 $ref: '#/components/schemas/Testimonial'
+ *       responses:
+ *         '200':
+ *           description: the testimonial has been deleted
+ *         '404':
+ *           description: the id 4 does not exist
+ *         '500':
+ *           description: the testimonial has not been deleted
+ */
