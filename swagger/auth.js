@@ -64,9 +64,9 @@
  *                    "email" : "test123456@test.com"
  *                    "password" : "Test123456"
  *                    "roleId": "1"
- *                registro sin éxito (Usuario ya existe):
+ *                registro sin éxito (Email ya existe):
  *                  value:    
- *                    "firstName": "lucas2"
+ *                    "firstName": "lucas"
  *                    "lastName": "novak"
  *                    "email" : "test123456@test.com"
  *                    "password" : "Test123456"
