@@ -21,6 +21,7 @@ const slidesRouter = require('./routes/slides')
 const contactsRouter = require('./routes/contacts')
 const swaggerUI = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc')
+const swaggerSpec = require('./swagger/config')
 
 const app = express();
 app.use(cors())
@@ -47,26 +48,6 @@ app.use('/contacts', contactsRouter);
 app.use('/comments', commentRouter)
 app.use('/members', membersRouter)
 app.use('/slides', slidesRouter);
-
-
-swaggerSpec = {
-  definition: {
-      openapi: "3.0.0",
-      info: {
-          title: "Somos Más API",
-          version: "1.0.0"
-      },
-      servers: [
-          {
-              url: "http://localhost:3000"
-          }
-      ]
-  },
-  apis: [
-      `${path.join(__dirname, '/swagger/*.js')}`
-  ],
-}
-
 app.use("/api-doc", swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(swaggerSpec)))
 
 // catch 404 and forward to error handler
