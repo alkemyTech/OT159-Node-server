@@ -59,11 +59,30 @@ swaggerSpec = {
           {
               url: "http://localhost:3000"
           }
-      ]
+      ],
+      components: {
+        securitySchemes: {
+          bearerAuth: {
+            type: "apiKey",
+            name: "authorization",
+            scheme: "bearer",
+            in: "header",
+          },
+        },
+      },
+      security: [
+        {
+          bearerAuth: {
+            type: "http",
+            scheme: "bearer",
+          },
+        },
+      ],
   },
   apis: [
       `${path.join(__dirname, '/swagger/*.js')}`
   ],
+ 
 }
 //here configure swagger 
 app.use("/api-doc", swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(swaggerSpec)))

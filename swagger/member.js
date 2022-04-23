@@ -73,7 +73,7 @@
  *        content:
  *          application/json:
  *            schema:
- *               $ref: '#/  /schemas/Member'
+ *               $ref: '#/components/schemas/Member'
  *      404:
  *         description: Member not found
  */
@@ -83,22 +83,16 @@
 /** --------------Get By ID------------------------------
  * @swagger
  * /members/:
- *  delete:
+ *  get:
  *     summary: delete a member
  *     tags: [Member]
- *     parameters:
- *        - in: path
- *          name: id
- *          schema:
- *              type: string
- *              required: true
  *     responses:
  *      200:
  *        description: Member deleted successfully
  *        content:
  *          application/json:
  *            schema:
- *               $ref: '#/  /schemas/Member'
+ *               $ref: '#/components/schemas/Member'
  *      404:
  *         description: Member not found
  */

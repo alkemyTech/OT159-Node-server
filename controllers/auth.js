@@ -29,7 +29,8 @@ const login = async (req, res, next) => {
         const user = await usersService.userLogin(email, password);
         const err = "{ok:false}"
         if (user) {
-            res.status(200).json({ user });
+            const userToken = createToken(user)
+            res.status(200).json({ user, userToken });
             return
         } res.status(404).json({ err });
         return
