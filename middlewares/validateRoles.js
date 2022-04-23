@@ -8,10 +8,12 @@ const { verifyToken } = require("./tokenHandler");
     }
 
    
-    const {roleId,firstName,lastName} = req.user.user;
+    const roleId = req.user.roleId;
+    const name = req.user.name;
+
     if(roleId !== 1){
         return res.status(401).json({
-            msg: firstName +lastName + ' is not an administrator.'
+            msg: name + ' is not an administrator.'
         });
     }
     next();
