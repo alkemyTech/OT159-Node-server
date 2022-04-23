@@ -28,7 +28,7 @@
  * @swagger
  * /testimonials:
  *   post:
- *       summary: create a new tesmonial
+ *       summary: create a new testimonial
  *       tags: [Testimonial]
  *       requestBody:
  *          required: true
@@ -43,7 +43,7 @@
  *                    "name": "Aniversario Fundación Somos Más!"
  *                    "image": "picture.jpg"
  *                    "content" : "Este mes se hará un evento con motivo de festejar nuestro aniversario."
- *                registro sin éxito (No contiene nombre):
+ *                registro exitoso (No contiene nombre):
  *                  value:    
  *                    "image": "picture.jpg"
  *                    "content" : "Este mes se hará un evento con motivo de festejar nuestro aniversario."
@@ -53,7 +53,7 @@
  *                    "image": "picture.jpg"
  *       responses:
  *         '201':
- *           description: OK
+ *           description: created
  *         '500':
  *           description: Internal server error
  */
@@ -62,7 +62,7 @@
  * @swagger
  * /testimonials/{id}:
  *   put:
- *       summary: update tesmonials
+ *       summary: update testimonials
  *       tags: [Testimonial]
  *       parameters:
  *          - in: path
@@ -105,7 +105,7 @@
  * @swagger
  * /testimonials/{id}:
  *   delete:
- *       summary: remove tesmonials
+ *       summary: remove testimonials
  *       tags: [Testimonial]
  *       parameters:
  *          - in: path
