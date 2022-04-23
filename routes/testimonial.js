@@ -3,9 +3,10 @@ var router = express.Router();
 const testimonialController = require("../controllers/testimonial");
 const validateTestimonial = require("../middlewares/validations/testimonial");
 const {authorize} = require('../middlewares/checkRole')
+const { isAdministrator } = require('../middlewares/administrator')
 
-router.post("/", authorize(), validateTestimonial, testimonialController.create);
-router.delete("/:id", authorize(), testimonialController.remove);
+router.post("/", isAdministrator, validateTestimonial, testimonialController.create);
+router.delete("/:id", isAdministrator, testimonialController.remove);
 
-router.put("/:id", authorize(), validateTestimonial, testimonialController.update);
+router.put("/:id", isAdministrator, validateTestimonial, testimonialController.update);
 module.exports = router;
