@@ -57,31 +57,38 @@
  *                 type: object
  *                 $ref: '#/components/schemas/register'
  *              examples:
- *                registro exitoso:
+ *                registro exitoso (Admin User):
  *                  value:    
- *                    "firstName": "lucas123456"
- *                    "lastName": "novak123456"
- *                    "email" : "test123456@test.com"
- *                    "password" : "Test123456"
+ *                    "firstName": "User"
+ *                    "lastName": "Admin"
+ *                    "email" : "user1@admin.com"
+ *                    "password" : "User1admin"
  *                    "roleId": "1"
+ *                registro exitoso (Standard User):
+ *                  value:    
+ *                    "firstName": "User"
+ *                    "lastName": "Standard"
+ *                    "email" : "user1@astandard.com"
+ *                    "password" : "User1standard"
+ *                    "roleId": "2"
  *                registro sin éxito (Email ya existe):
  *                  value:    
- *                    "firstName": "lucas"
- *                    "lastName": "novak"
- *                    "email" : "test123456@test.com"
- *                    "password" : "Test123456"
+ *                    "firstName": "User"
+ *                    "lastName": "Standard"
+ *                    "email" : "user1@standard.com"
+ *                    "password" : "User1standard"
  *                    "roleId": "2"
  *                registro sin éxito (Password no cumple requerimientos):
  *                  value:    
- *                    "firstName": "lucas2"
- *                    "lastName": "novak"
- *                    "email" : "test123456@test.com"
- *                    "password" : "test123456"
+ *                    "firstName": "User"
+ *                    "lastName": "Admin"
+ *                    "email" : "user2@admin.com"
+ *                    "password" : "user1admin"
  *                registro sin éxito (Se omite un campo):
  *                  value:    
- *                    "lastName": "novak"
- *                    "email" : "test123456@test.com"
- *                    "password" : "Test123456"  
+ *                    "lastName": "Admin"
+ *                    "email" : "user3@admin.com"
+ *                    "password" : "User3admin"  
  *       responses:
  *         '201':
  *           description: Created
@@ -89,7 +96,6 @@
  *           description: Bad Request
  *         '422':
  *           description: Unprocessable Entity
-
  */
 
 /**
@@ -106,18 +112,19 @@
  *              schema:
  *                 type: object
  *                 $ref: '#/components/schemas/login'
-  *              examples:
- *                login exitoso:
- *                  value:    
- *                    "email" : "test123456@test.com"
- *                    "password" : "Test123456"
+ *              examples:
  *                login sin éxito (Datos incorrectos):
  *                  value:    
- *                    "email" : "testsdfs1@test.com"
- *                    "password" : "Lucas123" 
+ *                    "email" : "user350@admin.com"
+ *                    "password" : "User350admin" 
  *                login sin éxito (Se omite un campo):
  *                  value:    
- *                    "password" : "Lucas123" 
+ *                    "password" : "User1admin"  
+ *                login exitoso:
+ *                  value:    
+ *                    "email" : "user1@admin.com"
+ *                    "password" : "User1admin"
+ *
  *       responses:
  *         200:
  *          description: OK
