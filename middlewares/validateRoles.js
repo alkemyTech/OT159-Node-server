@@ -2,7 +2,7 @@ const checkToken = require("./checkToken");
 
 const isAdminRole = (req, res, next) => {
     const user = checkToken(req, res, next);
-    
+
     if(!user){
         return res.status(500).json({
             msg: "You need to login first"
@@ -19,7 +19,6 @@ const isAdminRole = (req, res, next) => {
     }
     next();
 }
-
 
 
 module.exports = {

@@ -1,4 +1,4 @@
-const {createNewUser,sendEmail} = require('../services/users')
+const {createNewUser, sendEmail} = require('../services/users')
 const {passwordEncryption} = require('../helpers/encryptionHelper')
 const usersService = require('../services/users')
 const { createToken } = require('../middlewares/tokenHandler');
