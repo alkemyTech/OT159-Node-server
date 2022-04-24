@@ -6,15 +6,12 @@ createNewUser = (userDatafields) => {
     return usersRepository.createNewUser(userDatafields)
 }
 
-
-
-
 sendEmail=async(email)=>{
     const {sended} = await sendNewEmail(
         process.env.API_KEY,
         email,
-        // from='estebanferreccio@gmail.com',
-    process.env.TEMPLATE_ID
+        from='estebanferreccio@gmail.com',
+        process.env.TEMPLATE_ID
     ) 
     if(sended){ 
         return true
