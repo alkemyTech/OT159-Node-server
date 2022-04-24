@@ -47,7 +47,17 @@ let users =  [...admin, ...standard];
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert('Users', users, {});
+    await queryInterface.bulkInsert('Users', [{
+      firstName: 'Usuario',
+      lastName: 'Demo',
+      email: 'test@test.com',
+      // Important: Password not encrypted yet! 
+      password: '$2a$10$Z9ATTS9zr9qzIn/K0YQhbuL9rMe96.861ABvqfA1WY2sxszZ6D/mC',
+      roleId: 1,
+      photo: 'https://www.designevo.com/res/templates/thumb_small/colorful-hand-and-warm-community.png',
+      createdAt: new Date,
+      updatedAt: new Date
+    }], {});
   },
 
   down: async (queryInterface, Sequelize) => {
