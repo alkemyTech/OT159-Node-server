@@ -68,7 +68,7 @@
  *                  value:    
  *                    "firstName": "User"
  *                    "lastName": "Standard"
- *                    "email" : "user1@astandard.com"
+ *                    "email" : "user1@standard.com"
  *                    "password" : "User1standard"
  *                    "roleId": "2"
  *                registro sin éxito (Email ya existe):
