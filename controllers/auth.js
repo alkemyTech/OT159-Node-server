@@ -1,4 +1,4 @@
-const {createNewUser, sendEmail} = require('../services/users')
+const {createNewUser,sendEmail,existEmailUser} = require('../services/users')
 const {passwordEncryption} = require('../helpers/encryptionHelper')
 const usersService = require('../services/users')
 const { createToken } = require('../middlewares/tokenHandler');
@@ -6,6 +6,10 @@ const { createToken } = require('../middlewares/tokenHandler');
 const register = async(req, res, next) => {
     try {
         const { firstName, lastName, email, photo, roleId, password } = req.body
+        const userExist = await existEmailUser(email)
+        if(userExist) {
+            return res.status(400).json('The provided email is already in use')
+        }
         const passwordEncrypted = await passwordEncryption(password)
         const newUser = await createNewUser({ firstName, lastName, email, photo, roleId, password: passwordEncrypted })
         const userToken = createToken(newUser);
@@ -27,9 +31,9 @@ const login = async (req, res, next) => {
     try {
         const { email, password } = req.body
         const user = await usersService.userLogin(email, password);
-        const userToken = createToken(user);
         const err = "{ok:false}"
         if (user) {
+            const userToken = createToken(user)
             res.status(200).json({ user, userToken });
             return
         } res.status(404).json({ err });

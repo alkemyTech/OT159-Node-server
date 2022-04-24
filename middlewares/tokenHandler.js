@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-const jwtKey = process.env.SECRET;
+const jwtKey = process.env.JWT_KEY;
 const jwtExpirySeconds = 600;
 
 //Used to create and send a token to the user after a successfull LogIn

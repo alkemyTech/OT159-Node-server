@@ -2,7 +2,6 @@ var express = require("express");
 var router = express.Router();
 const testimonialController = require("../controllers/testimonial");
 const validateTestimonial = require("../middlewares/validations/testimonial");
-const {authorize} = require('../middlewares/checkRole');
 const  { isAdminRole } = require('../middlewares/validateRoles');
 
 router.post("/", isAdminRole, validateTestimonial, testimonialController.create);

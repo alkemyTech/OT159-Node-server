@@ -8,7 +8,7 @@ const memberRepositoryCreate = async (data) => {
 
 const memberRepositoryList = async () => {
     const getMembers = await db.members.findAll()
-
+    console.log(getMembers);
     return getMembers
 }
 const memberRepositoryDelete = async (id) => {
