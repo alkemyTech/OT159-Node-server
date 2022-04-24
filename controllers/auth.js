@@ -31,7 +31,7 @@ const login = async (req, res, next) => {
     try {
         const { email, password } = req.body
         const user = await usersService.userLogin(email, password);
-        const err = "{ok:false}"
+        const err = "{email or/and password are incorrect}"
         if (user) {
             const userToken = createToken(user)
             res.status(200).json({ user, userToken });
