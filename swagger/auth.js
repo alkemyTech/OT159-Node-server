@@ -85,7 +85,7 @@
  * @swagger
  * /auth/login:
  *   post:
- *       tags: ["User"]
+ *       tags: ["ser"]
  *       summary: Sign in User
  *       description: Login
  *       requestBody:
