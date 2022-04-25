@@ -29,7 +29,7 @@
  * @swagger
  * /auth/register:
  *   post:
- *       tags: ["Register User"]
+ *       tags: ["User"]
  *       summary: Sign Up User
  *       description: Register
  *       requestBody:
@@ -85,7 +85,7 @@
  * @swagger
  * /auth/login:
  *   post:
- *       tags: ["Login User"]
+ *       tags: ["User"]
  *       summary: Sign in User
  *       description: Login
  *       requestBody:
