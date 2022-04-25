@@ -2,7 +2,7 @@
  * @swagger
  * components:
  *  schemas:
- *    register:
+ *    User:
  *       type: object
  *       properties:
  *          firstName:
@@ -27,23 +27,6 @@
 
 /**
  * @swagger
- * components:
- *  schemas:
- *    login:
- *       type: object
- *       properties:
- *          email:
- *            type: string
- *          password:
- *            type: string
- *       required:
- *         - email
- *         - password
- *      
- */
-
-/**
- * @swagger
  * /auth/register:
  *   post:
  *       tags: ["Register User"]
@@ -55,13 +38,13 @@
  *            application/json:
  *              schema:
  *                 type: object
- *                 $ref: '#/components/schemas/register'
+ *                 $ref: '#/components/schemas/User'
  *              examples:
  *                registro exitoso (Admin User):
  *                  value:    
  *                    "firstName": "User"
  *                    "lastName": "Admin"
- *                    "email" : "user1@admin.com"
+ *                    "email" : "lukitmate@admin.com"
  *                    "password" : "User1admin"
  *                    "roleId": "1"
  *                registro exitoso (Standard User):
@@ -111,7 +94,7 @@
  *            application/json:
  *              schema:
  *                 type: object
- *                 $ref: '#/components/schemas/login'
+ *                 $ref: '#/components/schemas/User'
  *              examples:
  *                login sin éxito (Datos incorrectos):
  *                  value:    
@@ -120,10 +103,14 @@
  *                login sin éxito (Se omite un campo):
  *                  value:    
  *                    "password" : "User1admin"  
- *                login exitoso:
+ *                login exitoso (Admin User):
  *                  value:    
- *                    "email" : "user1@admin.com"
+ *                    "email" : "lukitmate@admin.com"
  *                    "password" : "User1admin"
+ *                login exitoso (Standard User):
+ *                  value:    
+ *                    "email" : "user1@standard.com"
+ *                    "password" : "User1standard"
  *
  *       responses:
  *         200:
