@@ -19,7 +19,9 @@ const activitiesRouter = require('./routes/activities')
 const commentRouter = require('./routes/comments')
 const slidesRouter = require('./routes/slides')
 const contactsRouter = require('./routes/contacts')
-
+const swaggerUI = require('swagger-ui-express');
+const swaggerJsDoc = require('swagger-jsdoc')
+const swaggerSpec = require('./swagger/config')
 
 const app = express();
 app.use(cors())
@@ -36,7 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 
 app.use('/users', usersRouter); 
-app.use('/category',categoryRouter); 
+app.use('/categories',categoryRouter); 
 app.use('/news', newsRouter);
 app.use('/organization', organizationRouter);
 app.use('/auth', authRouter)
@@ -46,6 +48,7 @@ app.use('/contacts', contactsRouter);
 app.use('/comments', commentRouter)
 app.use('/members', membersRouter)
 app.use('/slides', slidesRouter);
+app.use("/api-doc", swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(swaggerSpec)))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

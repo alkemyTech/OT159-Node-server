@@ -9,12 +9,12 @@ createNewUser = (userDatafields) => {
 
 
 
-sendEmail=async(email)=>{
+const sendEmail=async(email)=>{
     const {sended} = await sendNewEmail(
         process.env.API_KEY,
         email,
-        // from='estebanferreccio@gmail.com',
-    process.env.TEMPLATE_ID
+        from='estebanferreccio@gmail.com',
+        process.env.TEMPLATE_ID
     ) 
     if(sended){ 
         return true
@@ -25,9 +25,16 @@ sendEmail=async(email)=>{
 
 }
 
+const existEmailUser = async (email) => {
+    const user = await usersRepository.findMailUser(email);
+    return user;
+  };
+
+
 module.exports={
     sendEmail,
-    createNewUser
+    createNewUser,
+    existEmailUser
 }
 module.exports.userLogin = async (email, password) => {
     const userMail = await usersRepository.findMailUser(email, password)

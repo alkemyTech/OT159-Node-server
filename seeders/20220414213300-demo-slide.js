@@ -3,25 +3,25 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
 
-    return queryInterface.bulkInsert('Slide', [{
+    return queryInterface.bulkInsert('Slides', [{
       imageUrl: 'SLIDE1.jpg',
       text: 'Slide1',
-      orderw: 1,
-      organizationId: 1,
+      order: 1,
+      organizationId: null,
       createdAt: new Date,
       updatedAt: new Date
     },
     {
       imageUrl:'SLIDE2.jpg',
       text: 'Slide2',
-      orderw: 1,
-      organizationId: 1,
+      order: 1,
+      organizationId: null,
       createdAt: new Date,
       updatedAt: new Date
     }]);
   },
 
   async down (queryInterface, Sequelize) {
-    return queryInterface.bulkDelete('Slide', null, {});
+    return queryInterface.bulkDelete('Slides', null, {});
   }
 };

@@ -3,8 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+<<<<<<< HEAD
     "test": "cross-env NODE_ENV=test jest ./tests/* ",
     "start": "node ./bin/www",
+=======
+    "start": "node ./bin/www",
+    "test": "cross-env NODE_ENV=test jest ./test/* ",
+>>>>>>> dev
     "pretest": "cross-env NODE_ENV=test npm run db:reset",
     "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all --seeders-path ./seeders",
     "db:create:test": "cross-env NODE_ENV=test npx sequelize-cli db:create"
@@ -21,10 +26,14 @@
     "express": "~4.16.1",
     "express-validator": "^6.14.0",
     "http-errors": "~1.6.3",
+    "jest": "^28.0.1",
     "jsonwebtoken": "^8.5.1",
     "morgan": "~1.9.1",
     "mysql2": "^2.2.3",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "supertest": "^6.2.2",
+    "swagger-jsdoc": "^6.2.1",
+    "swagger-ui-express": "^4.3.0"
   },
   "devDependencies": {
     "jest": "^27.5.1",
