@@ -1,28 +1,31 @@
 const supertest = require('supertest');
 const app = require('../app');
-const db = require('../models');
 
 const api = supertest(app);
 
-let token;
+    let token;
 
-beforeAll((done) => {
-    request(api)
-      .post('/auth/login')
-      .send({
-        username: 'Usuario',
-        password: '1234',
-      })
-      .end((err, response) => {
-          token = response.body.token;
-          console.log(token);  
-        done();
+    beforeEach(async() => {
+      
+      const response = await api.post('/auth/login')
+        .send({
+          email: 'test@test.com',
+          password: 'Asd123456',
+        });
+          token = response.body.userToken
       });
-});
 
 describe('members endpoint', () => {
 
     test('can get all the members', async () => {
-        const response = await api.get('/members').expect(200);
+      await api.get('/members')
+        .set('Authorization', `Bearer ${token}`)
+        .expect(200);
+    })
+
+    test('error 403 if Bearer token its not provided', async () => {
+      const response = await api.get('/members')
+        .expect(403);
+      console.log(response.text)
     })
 });

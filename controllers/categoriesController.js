@@ -49,12 +49,10 @@ exports.getAllCategories = async (req, res) => {
 
 exports.remove = async (req,res) => {
     const { id } = req.params;
-    console.log('acva')
     try {
         const deletedCount = await categoryServiceDelete(id);
         res.status(200).send(`Deleted category with id ${id}`);
     }catch(err) {
-        console.log(err)
         res.status(err.code || 500).send(err.name);
     }
 }
