@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "jest": "npx cross-env NODE_ENV=test jest ./test/*",
     "start": "node ./bin/www",
     "test": "cross-env NODE_ENV=test jest ./test/* ",
     "pretest": "cross-env NODE_ENV=test npm run db:reset",
