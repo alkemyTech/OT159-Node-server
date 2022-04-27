@@ -1,5 +1,6 @@
 const supertest = require('supertest');
 const app = require('../app');
+const db = require('../models')
 
 const api = supertest(app);
 
@@ -116,13 +117,16 @@ describe('members endpoint', () => {
     const getMembers = await api.get('/members')
         .set('Authorization', `Bearer ${tokenAdmin}`)
       .expect(200);
-    const activeMembers = getMembers.body.data.length;
-    expect(activeMembers).toEqual(3);
+
     const id = getMembers.body.data[1].id;
     const response = await api.delete(`/members/${id}`)
         .set('Authorization', `Bearer ${tokenAdmin}`)
       .expect(200);
+    
+    const findMember = await db.members.findByPk(id);
+    
     expect(response.body.msg).toBe('Member deleted successfully')
+    expect(findMember).toBeNull()
   })
 
   test(`error 404 if member to delete doesn't exist`, async () => {
