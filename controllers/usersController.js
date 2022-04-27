@@ -1,5 +1,7 @@
-const {response,request}=require('express')
+const {response,request}=require('express');
 const userService = require("../services/usersService");
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 
   const usersList = async (req, res) => {
@@ -60,9 +62,20 @@ const editingUser = async(req = request, res = response)=>{
       })
     }
   }
-
+const getOneUser = (req=request,res= response) => {
+  if (req.headers['authorization'] && req.headers['authorization'].startsWith("Bearer ")) {
+    let authHeader = req.headers['authorization'];
+    let token = authHeader.substring(7, authHeader.length);
+    const data = jwt.verify(token, process.env.JWT_KEY);
+    const user = data.user
+    return res.status(200).json({user});
+  } else {
+     return res.status(403).send({ msg: 'Token must be provided' });
+  }
+}
   module.exports = {
     deleteUser,
     usersList,
-    editingUser
+    editingUser,
+    getOneUser
   }
