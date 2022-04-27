@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "cross-env NODE_ENV=test jest ./tests/* ",
+    "test": "cross-env NODE_ENV=test jest ./tests/* --detectOpenHandles",
     "pretest": "cross-env NODE_ENV=test npm run db:reset",
     "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all --seeders-path ./seeders",
     "db:create:test": "cross-env NODE_ENV=test npx sequelize-cli db:create"

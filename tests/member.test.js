@@ -3,17 +3,17 @@ const app = require('../app');
 
 const api = supertest(app);
 
-    let token;
+let token;
 
-    beforeEach(async() => {
-      
-      const response = await api.post('/auth/login')
-        .send({
-          email: 'test@test.com',
-          password: 'Asd123456',
-        });
-          token = response.body.userToken
-      });
+beforeEach(async() => {
+  
+  const response = await api.post('/auth/login')
+    .send({
+      email: 'test@test.com',
+      password: 'Asd123456',
+    });
+    token = response.body.userToken
+});
 
 describe('members endpoint', () => {
 
@@ -24,8 +24,7 @@ describe('members endpoint', () => {
     })
 
     test('error 403 if Bearer token its not provided', async () => {
-      const response = await api.get('/members')
-        .expect(403);
-      console.log(response.text)
+      const response = await api.get('/members').expect(403);
+      expect(response.text).toBe("{\"msg\":\"Token must be provided\"}")
     })
 });
