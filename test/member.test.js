@@ -3,27 +3,27 @@ const app = require('../app');
 
 const api = supertest(app);
 
-let tokenAdmin;
-let tokenStandard;
-
-beforeEach(async() => {
-  
-  const response = await api.post('/auth/login')
-    .send({
-      email: 'test@test.com',
-      password: 'Asd123456',
-    });
-  tokenAdmin = response.body.userToken
-  
-  const response2 = await api.post('/auth/login')
-    .send({
-      email: 'standard@test.com',
-      password: 'Asd123456',
-    });
-    tokenStandard = response2.body.userToken
-});
-
 describe('members endpoint', () => {
+
+  let tokenAdmin;
+  let tokenStandard;
+
+  beforeEach(async() => {
+  
+    const response = await api.post('/auth/login')
+      .send({
+        email: 'test@test.com',
+        password: 'Asd123456',
+      });
+    tokenAdmin = response.body.userToken
+  
+    const response2 = await api.post('/auth/login')
+      .send({
+        email: 'standard@test.com',
+        password: 'Asd123456',
+      });
+    tokenStandard = response2.body.userToken
+  });
 
   test('can get all the members if user is Admin', async () => {
     const response = await api.get('/members')
