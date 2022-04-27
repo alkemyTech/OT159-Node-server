@@ -17,22 +17,21 @@ beforeEach(async() => {
 
 describe('members endpoint', () => {
 
-    test('can get all the members', async () => {
-      const response = await api.get('/members')
-        .set('Authorization', `Bearer ${token}`)
-        .expect(200);
+  test('can get all the members', async () => {
+    const response = await api.get('/members')
+      .set('Authorization', `Bearer ${token}`)
+      .expect(200);
+    const activeMembers = response.body.data.length;
+    const member1 = response.body.data[0];
+    expect(activeMembers).toEqual(2);
+    expect(member1.name).toBe('Member1');
+  })
 
-      const activeMembers = response.body.data.length;
-      const member1 = response.body.data[0];
-      expect(activeMembers).toEqual(2);
-      expect(member1.name).toBe('Member1');
-    })
-
-    test('error 403 if Bearer token its not provided', async () => {
-      const response = await api.get('/members').expect(403);
-      const message = response.text;
-      expect(message).toBe("{\"msg\":\"Token must be provided\"}")
-    })
+  test('error 403 if Bearer token its not provided', async () => {
+    const response = await api.get('/members').expect(403);
+    const message = response.text;
+    expect(message).toBe("{\"msg\":\"Token must be provided\"}")
+  })
   
   test('can delete a member by id', async () => {
     const getMembers = await api.get('/members')
@@ -45,5 +44,12 @@ describe('members endpoint', () => {
         .set('Authorization', `Bearer ${token}`)
       .expect(200);
     expect(response.body.msg).toBe('Member deleted successfully')
-  });
+  })
+
+  test(`error 404 if member to delete doesn't exist`, async () => {
+    const response = await api.delete(`/members/99`)
+        .set('Authorization', `Bearer ${token}`)
+      .expect(404);
+    expect(response.body.message).toBe('Member not found');
+  })
 });
