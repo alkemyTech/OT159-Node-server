@@ -3,7 +3,8 @@ const app = require('../app');
 
 const api = supertest(app);
 
-let token;
+let tokenAdmin;
+let tokenStandard;
 
 beforeEach(async() => {
   
@@ -12,14 +13,21 @@ beforeEach(async() => {
       email: 'test@test.com',
       password: 'Asd123456',
     });
-    token = response.body.userToken
+  tokenAdmin = response.body.userToken
+  
+  const response2 = await api.post('/auth/login')
+    .send({
+      email: 'standard@test.com',
+      password: 'Asd123456',
+    });
+    tokenStandard = response2.body.userToken
 });
 
 describe('members endpoint', () => {
 
-  test('can get all the members', async () => {
+  test('can get all the members if user is Admin', async () => {
     const response = await api.get('/members')
-      .set('Authorization', `Bearer ${token}`)
+      .set('Authorization', `Bearer ${tokenAdmin}`)
       .expect(200);
     const activeMembers = response.body.data.length;
     const member1 = response.body.data[0];
@@ -27,7 +35,15 @@ describe('members endpoint', () => {
     expect(member1.name).toBe('Member1');
   })
 
-  test('error 403 if Bearer token its not provided', async () => {
+  test(`can't get any members if user is not Admin`, async () => {
+    const response = await api.get('/members')
+      .set('Authorization', `Bearer ${tokenStandard}`)
+      .expect(401);
+    const errorMessage = response.error.text;
+    expect(errorMessage).toBe("{\"msg\":\"Standard is not an administrator.\"}")
+  })
+
+  test('error 403 if Bearer tokenAdmin its not provided', async () => {
     const response = await api.get('/members').expect(403);
     const message = response.text;
     expect(message).toBe("{\"msg\":\"Token must be provided\"}")
@@ -35,20 +51,20 @@ describe('members endpoint', () => {
   
   test('can delete a member by id', async () => {
     const getMembers = await api.get('/members')
-        .set('Authorization', `Bearer ${token}`)
+        .set('Authorization', `Bearer ${tokenAdmin}`)
       .expect(200);
     const activeMembers = getMembers.body.data.length;
     expect(activeMembers).toEqual(2);
     const id = getMembers.body.data[1].id;
     const response = await api.delete(`/members/${id}`)
-        .set('Authorization', `Bearer ${token}`)
+        .set('Authorization', `Bearer ${tokenAdmin}`)
       .expect(200);
     expect(response.body.msg).toBe('Member deleted successfully')
   })
 
   test(`error 404 if member to delete doesn't exist`, async () => {
     const response = await api.delete(`/members/99`)
-        .set('Authorization', `Bearer ${token}`)
+        .set('Authorization', `Bearer ${tokenAdmin}`)
       .expect(404);
     expect(response.body.message).toBe('Member not found');
   })
