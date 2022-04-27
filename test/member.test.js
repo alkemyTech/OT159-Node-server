@@ -50,6 +50,9 @@ describe('members endpoint', () => {
   })
 
   test('can create a new member', async () => {
+    const membersBeforeCreate = await api.get('/members')
+      .set('Authorization', `Bearer ${tokenAdmin}`);
+    
     const response = await api.post('/members').send({
       name: 'New Member',
       image: 'newmember.jpg',
@@ -58,8 +61,16 @@ describe('members endpoint', () => {
       linkedinUrl: 'linkedin.com/in/NewMember',
       description: 'NewMember description',
     }).expect(201);
+
     const newMember = response.body.newMember;
+    const membersAfterCreate = await api.get('/members')
+      .set('Authorization', `Bearer ${tokenAdmin}`);
+    
+    const oldMembersLength = membersBeforeCreate.body.data.length;
+    const newMembersLength = membersAfterCreate.body.data.length
+
     expect(newMember.name).toBe('New Member');
+    expect(newMembersLength).toBeGreaterThan(oldMembersLength);
   });
 
   test(`can't create a new member if name is not a string`, async () => {
