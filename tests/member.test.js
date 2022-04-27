@@ -1,6 +1,5 @@
 const supertest = require('supertest');
 const app = require('../app');
-const db = require('../models');
 
 const api = supertest(app);
 
@@ -61,6 +60,45 @@ describe('members endpoint', () => {
     }).expect(201);
     const newMember = response.body.newMember;
     expect(newMember.name).toBe('New Member');
+  });
+
+  test(`can't create a new member if name is not a string`, async () => {
+    const response = await api.post('/members').send({
+      name: 123456,
+      image: 'newmember.jpg',
+      facebookUrl: 'facebook.com/NewMember',
+      instagramUrl: 'instagram.com/NewMember',
+      linkedinUrl: 'linkedin.com/in/NewMember',
+      description: 'NewMember description',
+    }).expect(422);
+    const errorList = response.body.errorList;
+    expect(errorList[0].msg).toBe('the name most be String');
+  });
+
+  test(`can't create a new member if image is not a string`, async () => {
+    const response = await api.post('/members').send({
+      name: 'NewMember',
+      image: 123456,
+      facebookUrl: 'facebook.com/NewMember',
+      instagramUrl: 'instagram.com/NewMember',
+      linkedinUrl: 'linkedin.com/in/NewMember',
+      description: 'NewMember description',
+    }).expect(422);
+    const errorList = response.body.errorList;
+    expect(errorList[0].msg).toBe('the image most be String');
+  });
+
+  test(`can't create a new member if image is empty`, async () => {
+    const response = await api.post('/members').send({
+      name: 'NewMember',
+      image: null,
+      facebookUrl: 'facebook.com/NewMember',
+      instagramUrl: 'instagram.com/NewMember',
+      linkedinUrl: 'linkedin.com/in/NewMember',
+      description: 'NewMember description',
+    }).expect(422);
+    const errorList = response.body.errorList;
+    expect(errorList[0].msg).toBe('the image can not be empty');
   });
   
   test('can delete a member by id', async () => {
