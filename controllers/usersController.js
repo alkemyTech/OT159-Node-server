@@ -1,8 +1,5 @@
 const {response,request}=require('express');
 const userService = require("../services/usersService");
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
-
 
   const usersList = async (req, res) => {
 
