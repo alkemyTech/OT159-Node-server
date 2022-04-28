@@ -63,15 +63,8 @@ const editingUser = async(req = request, res = response)=>{
     }
   }
 const getOneUser = (req=request,res= response) => {
-  if (req.headers['authorization'] && req.headers['authorization'].startsWith("Bearer ")) {
-    let authHeader = req.headers['authorization'];
-    let token = authHeader.substring(7, authHeader.length);
-    const data = jwt.verify(token, process.env.JWT_KEY);
-    const user = data.user
-    return res.status(200).json({user});
-  } else {
-     return res.status(403).send({ msg: 'Token must be provided' });
-  }
+  const userProfile = req.user;
+  return res.status(200).json(userProfile.user);
 }
   module.exports = {
     deleteUser,
