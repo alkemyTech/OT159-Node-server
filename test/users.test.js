@@ -50,13 +50,42 @@ beforeEach(async () => {
 })
 
 //Tests <3
-test('GET /users should return 2 users', async() => {
+test('GET /users with NO token should return Forbidden', async() => {
+  const response = await api.get('/users')
+    .expect(403)
+    .expect('Content-Type', /application\/json/)
+  expect(response.body.msg).toBe('Token must be provided')
+})
+
+test('GET /users with Standard user token should return Unauthorized', async() => {
+  const response = await api.get('/users')
+    .set('Authorization', `Bearer ${standardToken}`)
+    .expect(401)
+    .expect('Content-Type', /application\/json/)
+  expect(response.body.msg).toContain('is not an administrator')
+})
+
+test('GET /users with Admin token should return 2 users', async() => {
   const response = await api.get('/users')
     .set('Authorization',`Bearer ${adminToken}`)
     .expect(200)
     .expect('Content-Type', /application\/json/)
-    expect(response.body.meta.total).toBe(initialUsers.length)
-    expect(response.body.data).toHaveLength(initialUsers.length)
-    expect(response.body.data[0]).toMatchObject(user1)
-    expect(response.body.data[1]).toMatchObject(user2)
+  expect(response.body.meta.total).toBe(initialUsers.length)
+  expect(response.body.data).toHaveLength(initialUsers.length)
+  expect(response.body.data[0]).toMatchObject(user1)
+  expect(response.body.data[1]).toMatchObject(user2)
+})
+
+test('PATCH /users/1 with missing fields should be unprocessable', async() => {
+  const response = await api.patch('/users/1')
+    .set('Authorization',`Bearer ${adminToken}`)
+    .send({
+      "firstName":"Great",
+      "lastName":"Person"
+    })
+    .expect(422)
+    .expect('Content-Type', /application\/json/)
+
+  expect(response.body.errorList)
+  .toEqual(expect.arrayContaining([expect.objectContaining({"param": "image"})]))
 })
