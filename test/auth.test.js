@@ -7,7 +7,7 @@ const api = supertest(app);
  * Test the /POST route
  */
 describe("POST /auth/register", () => {
-  test("should register new user", async () => {
+  test("should register a new user", async () => {
     const register = {
       firstName: "registerName",
       lastName: "registerLastName",
@@ -31,12 +31,12 @@ describe("POST /auth/register", () => {
 
   test("should not register user if email is already in use", async () => {
     const existingUser = {
-      firstName: "newUserName",
-      lastName: "userLastName",
-      email: "newUser@gmail.com",
-      photo: "userPhoto.jpg",
+      firstName: "registerName",
+      lastName: "registerLastName",
+      email: "register@gmail.com",
+      photo: "register.jpg",
       roleId: 2,
-      password: "UserPass1",
+      password: "RegisterPass1",
     };
 
     const response = await api.post("/auth/register").send(existingUser);
@@ -74,11 +74,22 @@ describe("POST /auth/register", () => {
 });
 
 describe("POST /auth/login", () => {
-  test("/auth/login should login an existing user", async () => {
-    const login = {
-      email: "admin1@demo.com",
-      password: "adminPass1",
+  test("should login an existing user", async () => {
+    const user = {
+      firstName: "userName",
+      lastName: "userLastName",
+      email: "user@gmail.com",
+      photo: "user.jpg",
+      roleId: 2,
+      password: "userPass1",
     };
+
+    const login = {
+      email: "user@gmail.com",
+      password: "userPass1",
+    };
+    await api.post("/auth/register").send(user);
+
     const response = await api.post("/auth/login").send(login);
 
     expect(response.status).toBe(200);
@@ -86,11 +97,11 @@ describe("POST /auth/login", () => {
       expect.stringContaining("json")
     );
     expect(response.body).toHaveProperty("user");
-    expect(response.body.user.email).toEqual("admin1@demo.com");
+    expect(response.body.user.email).toEqual("user@gmail.com");
     expect(response.body).toHaveProperty("userToken");
   });
 
-  test("/auth/login should not login with wrong information", async () => {
+  test("should not login with wrong information", async () => {
     const wrongLogin = {
       email: "newUser@gmail.com",
       password: "wrongPass1",
@@ -102,7 +113,7 @@ describe("POST /auth/login", () => {
     expect(response.body.err).toEqual("{email or/and password are incorrect}");
   });
 
-  test("/auth/login should not login with missing information", async () => {
+  test("should not login with missing information", async () => {
     const missingData = {
       email: "",
       password: "",
