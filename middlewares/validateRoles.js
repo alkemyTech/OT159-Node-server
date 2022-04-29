@@ -12,7 +12,7 @@ const isAdminRole = (req, res, next) => {
     const roleId = user.roleId;
     const name = user.firstName;
 
-    if(roleId !== 1){
+    if(+roleId !== 1){
         return res.status(401).json({
             msg: name + ' is not an administrator.'
         });

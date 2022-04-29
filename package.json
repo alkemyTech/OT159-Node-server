@@ -4,23 +4,29 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "jest --watchAll"
+    "test": "cross-env NODE_ENV=test jest ./test/* --detectOpenHandles",
+    "pretest": "cross-env NODE_ENV=test npm run db:reset",
+    "db:reset": "cross-env NODE_ENV=test npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all --seeders-path ./seeders",
+    "db:create:test": "cross-env NODE_ENV=test npx sequelize-cli db:create"
   },
   "dependencies": {
     "@sendgrid/mail": "^7.6.2",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "express-validator": "^6.14.0",
     "http-errors": "~1.6.3",
+    "jest": "^28.0.1",
     "jsonwebtoken": "^8.5.1",
     "morgan": "~1.9.1",
     "mysql2": "^2.2.3",
     "sequelize": "^6.3.5",
+    "supertest": "^6.2.2",
     "swagger-jsdoc": "^6.2.1",
     "swagger-ui-express": "^4.3.0"
   },

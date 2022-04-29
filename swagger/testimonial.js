@@ -43,14 +43,14 @@
  *                    "name": "Aniversario Fundación Somos Más!"
  *                    "image": "picture.jpg"
  *                    "content" : "Este mes se hará un evento con motivo de festejar nuestro aniversario."
- *                registro exitoso (No contiene nombre):
- *                  value:    
- *                    "image": "picture.jpg"
- *                    "content" : "Este mes se hará un evento con motivo de festejar nuestro aniversario."
- *                registro sin éxito (No contiene texto):
+ *                registro exitoso (No contiene texto):
  *                  value:    
  *                    "name": "Aniversario Fundación Somos Más!"
  *                    "image": "picture.jpg"
+ *                registro sin éxito (No contiene nombre):
+ *                  value:    
+ *                    "image": "picture.jpg"
+ *                    "content" : "Este mes se hará un evento con motivo de festejar nuestro aniversario."
  *       responses:
  *         '201':
  *           description: created

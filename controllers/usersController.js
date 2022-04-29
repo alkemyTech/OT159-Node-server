@@ -1,6 +1,5 @@
-const {response,request}=require('express')
+const {response,request}=require('express');
 const userService = require("../services/usersService");
-
 
   const usersList = async (req, res) => {
 
@@ -60,9 +59,13 @@ const editingUser = async(req = request, res = response)=>{
       })
     }
   }
-
+const getOneUser = (req=request,res= response) => {
+  const userProfile = req.user;
+  return res.status(200).json(userProfile.user);
+}
   module.exports = {
     deleteUser,
     usersList,
-    editingUser
+    editingUser,
+    getOneUser
   }

@@ -66,7 +66,7 @@
  *              required: true
  *     responses:
  *      200:
- *        description: Member deleted successfully
+ *        description: Return a member by id
  *        content:
  *          application/json:
  *            schema:
@@ -78,11 +78,11 @@
  * @swagger
  * /members/:
  *  get:
- *     summary: delete a member
+ *     summary: Get members
  *     tags: [Member]
  *     responses:
  *      200:
- *        description: Member deleted successfully
+ *        description: return all members
  *        content:
  *          application/json:
  *            schema:
