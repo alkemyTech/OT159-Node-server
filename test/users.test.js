@@ -34,6 +34,10 @@ const user2 = initialUsers[1];
 let adminToken = '';
 let standardToken = '';
 
+describe('users endpoint', () => {
+
+
+
 beforeEach(async () => {
   //DB cleanup and create
   await Role.destroy({where:{}, force: true}) //Ignore paranoid
@@ -88,4 +92,34 @@ test('PATCH /users/1 with missing fields should be unprocessable', async() => {
 
   expect(response.body.errorList)
   .toEqual(expect.arrayContaining([expect.objectContaining({"param": "image"})]))
+})
+
+test('PATCH /users/1 with correct fields', async() => {
+  const response = await api.patch('/users/1')
+    .set('Authorization',`Bearer ${adminToken}`)
+    .send({
+      "firstName":"Great",
+      "lastName":"Person",
+      "image":"pers.png"
+    })
+    .expect(200)
+    .expect('Content-Type', /application\/json/)
+  expect(response.body.msg).toContain('The user was successfully edited')
+})
+
+test('DELETE /users/3 should return user not found', async() => {
+  const response = await api.delete('/users/3')
+    .set('Authorization',`Bearer ${adminToken}`)
+    .expect(404)
+    .expect('Content-Type', /application\/json/)
+  expect(response.body.msg).toContain('User not found')
+})
+
+test('DELETE /users/1 should return deleted successfully', async() => {
+  const response = await api.delete('/users/1')
+    .set('Authorization',`Bearer ${adminToken}`)
+    .expect(200)
+    .expect('Content-Type', /application\/json/)
+  expect(response.body.msg).toContain('user deleted successfully')
+})
 })
