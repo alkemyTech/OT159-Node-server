@@ -28,7 +28,6 @@ const postMembers = async (req = request, res = response) => {
                 })
             } catch (error) {
                 
-                console.log(error)
                 return res.status(500).json({
                     msg:'something happened, please call the admin,'
                 })

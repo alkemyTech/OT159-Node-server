@@ -10,7 +10,6 @@ const memberServiceList = () => {
 
 const memberServiceDelete = async (id) => {
     const deletedMember = await memberRepositoryDelete(id);
-    console.log(deletedMember);
     if (deletedMember !== 1) {
         const error = new Error();
         error.status = 404;
