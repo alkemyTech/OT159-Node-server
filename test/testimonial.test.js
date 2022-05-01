@@ -36,11 +36,6 @@ let failedTestimonial = {
     content: "Este mes se hará un evento con motivo de festejar nuestro aniversario."
 }
 
-let failedTestimonialB = {   
-    name: "Aniversario Fundación Somos Más!", 
-    image: "picture.jpg"
-}
-
 let successfulTestimonialUpdated = {    
     name: "Colecta somo más!",
     image: "colecta.jpg",
